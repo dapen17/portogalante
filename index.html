@@ -277,18 +277,6 @@
     /* Scroll down hint */
     @keyframes scrollhint { 0%,100%{transform:translateY(0);opacity:1;} 50%{transform:translateY(8px);opacity:.3;} }
     .scroll-hint { animation: scrollhint 2s ease-in-out infinite; }
-
-    /* Mobile: hide floating badges */
-    @media (max-width: 1023px) { .fbadge { display:none; } }
-
-    /* Mobile responsive */
-    @media (max-width: 767px) {
-      #home { padding-top: 5rem; padding-bottom: 2rem; }
-      #home h1 { font-size: clamp(2rem, 8vw, 2.8rem); line-height: 1.1; }
-      .glass.rounded-3xl { padding: 1.25rem; border-radius: 1.25rem; }
-      .glass.rounded-2xl { padding: 1rem; border-radius: 1rem; }
-      #home .animate-float { animation-duration: 0s; }
-    }
   </style>
 </head>
 
@@ -379,23 +367,8 @@
         <button id="themeBtn" class="glass rounded-full w-9 h-9 grid place-items-center hover:bg-white/10 transition" aria-label="theme">
           <svg id="iconMoon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
         </button>
-        <!-- Hamburger (mobile) -->
-        <button id="menuBtn" class="md:hidden glass rounded-full w-9 h-9 grid place-items-center hover:bg-white/10 transition" aria-label="menu">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-        </button>
       </div>
     </nav>
-    <!-- Mobile menu dropdown -->
-    <div id="mobileMenu" class="hidden md:hidden glass border-t border-white/5 px-6 py-4">
-      <ul class="flex flex-col gap-1 text-sm">
-        <li><a href="#home"       class="block px-4 py-2 rounded-xl hover:bg-white/10 transition" data-i18n="nav.home" onclick="document.getElementById('mobileMenu').classList.add('hidden')">Home</a></li>
-        <li><a href="#about"      class="block px-4 py-2 rounded-xl hover:bg-white/10 transition" data-i18n="nav.about" onclick="document.getElementById('mobileMenu').classList.add('hidden')">About</a></li>
-        <li><a href="#stack"      class="block px-4 py-2 rounded-xl hover:bg-white/10 transition" data-i18n="nav.stack" onclick="document.getElementById('mobileMenu').classList.add('hidden')">Stack</a></li>
-        <li><a href="#experience" class="block px-4 py-2 rounded-xl hover:bg-white/10 transition" data-i18n="nav.exp" onclick="document.getElementById('mobileMenu').classList.add('hidden')">Experience</a></li>
-        <li><a href="#projects"   class="block px-4 py-2 rounded-xl hover:bg-white/10 transition" data-i18n="nav.projects" onclick="document.getElementById('mobileMenu').classList.add('hidden')">Projects</a></li>
-        <li><a href="#contact"    class="block px-4 py-2 rounded-xl hover:bg-white/10 transition" data-i18n="nav.contact" onclick="document.getElementById('mobileMenu').classList.add('hidden')">Contact</a></li>
-      </ul>
-    </div>
   </header>
 
   <!-- HERO -->
@@ -789,7 +762,6 @@
       'about.title':'Crafting digital products with <span class="text-gradient">obsession</span> &amp; precision.',
       'about.p1':"I'm <b>Galante Marreti</b>, a relentlessly curious fullstack engineer who lives at the intersection of design, code, and product thinking. I believe great software is invisible — it just feels right.",
       'about.p2':"I enthusiastically use English as my working language and switch fluidly between Bahasa Indonesia and English. Over the past year and a half I've shipped production systems across two continents, learning that great engineering is 20% syntax and 80% empathy — for users, teammates, and the next dev who reads your code.",
-      'about.p3':"Outside of work, I founded <b class=\"text-brand-400\">Hastle Group</b> — the #1 developer community on Telegram, bringing together thousands of developers across Indonesia to share knowledge, collab on projects, and grow together.",
       'about.f1t':'Performance-first','about.f1d':'Sub-100ms p99, lighthouse 100s.',
       'about.f2t':'Design-driven','about.f2d':'Pixel-perfect, accessible, motion-rich UI.',
       'about.f3t':'Cloud-native','about.f3d':'Docker, K8s, AWS, edge & serverless.',
@@ -807,10 +779,7 @@
       'exp.jogL1':'▸ Led migration of legacy monolith to Next.js + Go microservices.',
       'exp.jogL2':'▸ Designed PostgreSQL schemas serving 300k+ daily active users.',
       'exp.jogL3':'▸ Mentored 3 junior devs; introduced code-review & CI standards.',
-      'exp.hastleP':'Founded and scaled <b>Hastle Group</b> to become the #1 developer community on Telegram — a thriving hub for Indonesian developers to collaborate, share knowledge, and build together.',
-      'exp.hastleL1':'▸ Grew community to thousands of active members organically.',
-      'exp.hastleL2':'▸ Organized dev talks, code challenges, and project collabs.',
-      'exp.hastleL3':'▸ Built bots & automation tools to manage & engage the community.',,'exp.eduOrg':'Self-taught + University · Indonesia',
+      'exp.eduTitle':'B.Sc. Informatics','exp.eduOrg':'Self-taught + University · Indonesia',
       'exp.eduP':'Built > 20 personal projects, contributed to OSS, won regional hackathons. Studied algorithms, distributed systems, and design.',
       'proj.title':'Selected <span class="text-gradient">work</span>.',
       'proj.sub':"A handful of products I'm proud of — from edge-rendered SaaS to realtime trading dashboards.",
@@ -848,10 +817,7 @@
       'exp.jogL1':'▸ Memimpin migrasi monolit lama ke Next.js + microservices Go.',
       'exp.jogL2':'▸ Merancang skema PostgreSQL untuk 300k+ pengguna aktif harian.',
       'exp.jogL3':'▸ Mentor 3 junior; mengenalkan standar code-review & CI.',
-      'exp.hastleP':'Mendirikan dan mengembangkan <b>Hastle Group</b> menjadi komunitas developer #1 di Telegram — pusat kolaborasi developer Indonesia untuk berbagi ilmu, proyek bersama, dan tumbuh bersama.',
-      'exp.hastleL1':'▸ Mengembangkan komunitas hingga ribuan anggota aktif secara organik.',
-      'exp.hastleL2':'▸ Mengadakan dev talk, code challenge, dan kolaborasi proyek.',
-      'exp.hastleL3':'▸ Membangun bot & tools otomasi untuk manajemen & engagement komunitas.',,'exp.eduOrg':'Otodidak + Universitas · Indonesia',
+      'exp.eduTitle':'S1 Informatika','exp.eduOrg':'Otodidak + Universitas · Indonesia',
       'exp.eduP':'Membangun >20 proyek pribadi, kontribusi OSS, juara hackathon regional. Mempelajari algoritma, distributed systems, dan desain.',
       'proj.title':'Karya <span class="text-gradient">terpilih</span>.',
       'proj.sub':'Beberapa produk yang saya banggakan — dari SaaS edge-rendered sampai dashboard trading realtime.',
@@ -915,22 +881,18 @@
   }
 
   // ===== Scroll reveal =====
-  // Immediately reveal elements already in viewport, then use IO for the rest
-  function revealEl(el) {
-    el.classList.add('in');
-    el.querySelectorAll('.bar > i').forEach(b => { b.style.width = b.dataset.value + '%'; });
-  }
   const io = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) revealEl(e.target); });
-  }, { threshold: 0, rootMargin: '0px 0px -40px 0px' });
-  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-  // Force-reveal all visible elements right away (fixes blank page on load)
-  requestAnimationFrame(() => {
-    document.querySelectorAll('.reveal').forEach(el => {
-      const r = el.getBoundingClientRect();
-      if (r.top < window.innerHeight) revealEl(el);
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        // skill bars
+        e.target.querySelectorAll('.bar > i').forEach(b => {
+          b.style.width = b.dataset.value + '%';
+        });
+      }
     });
-  });
+  }, { threshold: .12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
   // ===== Skills =====
   const skills = [
@@ -1074,11 +1036,6 @@
     frame();
   })();
 
-  // ===== Mobile menu =====
-  document.getElementById('menuBtn').addEventListener('click', () => {
-    document.getElementById('mobileMenu').classList.toggle('hidden');
-  });
-
   // ===== Spotlight =====
   const spotEl = document.getElementById('spotlight');
   document.addEventListener('mousemove', e => {
@@ -1135,15 +1092,8 @@
   // ===== Stagger observer =====
   const staggerObs = new IntersectionObserver(entries => {
     entries.forEach(e => { if(e.isIntersecting) { e.target.classList.add('in'); staggerObs.unobserve(e.target); } });
-  }, { threshold: 0, rootMargin: '0px 0px -40px 0px' });
+  }, { threshold: 0.15 });
   document.querySelectorAll('.stagger').forEach(el => staggerObs.observe(el));
-  // force stagger for visible
-  requestAnimationFrame(() => {
-    document.querySelectorAll('.stagger').forEach(el => {
-      const r = el.getBoundingClientRect();
-      if (r.top < window.innerHeight) { el.classList.add('in'); staggerObs.unobserve(el); }
-    });
-  });
 
   // ===== Glow cards =====
   document.querySelectorAll('#projectsGrid article, #skillsGrid .glass').forEach(el => el.classList.add('glow-card'));
@@ -1186,7 +1136,7 @@
       requestAnimationFrame(step);
       counterObs.unobserve(el);
     });
-  }, { threshold: 0.2 });
+  }, { threshold: .5 });
   document.querySelectorAll('.count-val').forEach(el => counterObs.observe(el));
 
   // ===== Ripple on click =====
