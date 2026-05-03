@@ -277,6 +277,18 @@
     /* Scroll down hint */
     @keyframes scrollhint { 0%,100%{transform:translateY(0);opacity:1;} 50%{transform:translateY(8px);opacity:.3;} }
     .scroll-hint { animation: scrollhint 2s ease-in-out infinite; }
+
+    /* Mobile: hide floating badges */
+    @media (max-width: 1023px) { .fbadge { display:none; } }
+
+    /* Mobile responsive */
+    @media (max-width: 767px) {
+      #home { padding-top: 5rem; padding-bottom: 2rem; }
+      #home h1 { font-size: clamp(2rem, 8vw, 2.8rem); line-height: 1.1; }
+      .glass.rounded-3xl { padding: 1.25rem; border-radius: 1.25rem; }
+      .glass.rounded-2xl { padding: 1rem; border-radius: 1rem; }
+      #home .animate-float { animation-duration: 0s; }
+    }
   </style>
 </head>
 
@@ -367,8 +379,23 @@
         <button id="themeBtn" class="glass rounded-full w-9 h-9 grid place-items-center hover:bg-white/10 transition" aria-label="theme">
           <svg id="iconMoon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
         </button>
+        <!-- Hamburger (mobile) -->
+        <button id="menuBtn" class="md:hidden glass rounded-full w-9 h-9 grid place-items-center hover:bg-white/10 transition" aria-label="menu">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
       </div>
     </nav>
+    <!-- Mobile menu dropdown -->
+    <div id="mobileMenu" class="hidden md:hidden glass border-t border-white/5 px-6 py-4">
+      <ul class="flex flex-col gap-1 text-sm">
+        <li><a href="#home"       class="block px-4 py-2 rounded-xl hover:bg-white/10 transition" data-i18n="nav.home" onclick="document.getElementById('mobileMenu').classList.add('hidden')">Home</a></li>
+        <li><a href="#about"      class="block px-4 py-2 rounded-xl hover:bg-white/10 transition" data-i18n="nav.about" onclick="document.getElementById('mobileMenu').classList.add('hidden')">About</a></li>
+        <li><a href="#stack"      class="block px-4 py-2 rounded-xl hover:bg-white/10 transition" data-i18n="nav.stack" onclick="document.getElementById('mobileMenu').classList.add('hidden')">Stack</a></li>
+        <li><a href="#experience" class="block px-4 py-2 rounded-xl hover:bg-white/10 transition" data-i18n="nav.exp" onclick="document.getElementById('mobileMenu').classList.add('hidden')">Experience</a></li>
+        <li><a href="#projects"   class="block px-4 py-2 rounded-xl hover:bg-white/10 transition" data-i18n="nav.projects" onclick="document.getElementById('mobileMenu').classList.add('hidden')">Projects</a></li>
+        <li><a href="#contact"    class="block px-4 py-2 rounded-xl hover:bg-white/10 transition" data-i18n="nav.contact" onclick="document.getElementById('mobileMenu').classList.add('hidden')">Contact</a></li>
+      </ul>
+    </div>
   </header>
 
   <!-- HERO -->
@@ -888,18 +915,22 @@
   }
 
   // ===== Scroll reveal =====
+  // Immediately reveal elements already in viewport, then use IO for the rest
+  function revealEl(el) {
+    el.classList.add('in');
+    el.querySelectorAll('.bar > i').forEach(b => { b.style.width = b.dataset.value + '%'; });
+  }
   const io = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('in');
-        // skill bars
-        e.target.querySelectorAll('.bar > i').forEach(b => {
-          b.style.width = b.dataset.value + '%';
-        });
-      }
-    });
-  }, { threshold: .12 });
+    entries.forEach(e => { if (e.isIntersecting) revealEl(e.target); });
+  }, { threshold: 0, rootMargin: '0px 0px -40px 0px' });
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  // Force-reveal all visible elements right away (fixes blank page on load)
+  requestAnimationFrame(() => {
+    document.querySelectorAll('.reveal').forEach(el => {
+      const r = el.getBoundingClientRect();
+      if (r.top < window.innerHeight) revealEl(el);
+    });
+  });
 
   // ===== Skills =====
   const skills = [
@@ -1043,6 +1074,11 @@
     frame();
   })();
 
+  // ===== Mobile menu =====
+  document.getElementById('menuBtn').addEventListener('click', () => {
+    document.getElementById('mobileMenu').classList.toggle('hidden');
+  });
+
   // ===== Spotlight =====
   const spotEl = document.getElementById('spotlight');
   document.addEventListener('mousemove', e => {
@@ -1099,8 +1135,15 @@
   // ===== Stagger observer =====
   const staggerObs = new IntersectionObserver(entries => {
     entries.forEach(e => { if(e.isIntersecting) { e.target.classList.add('in'); staggerObs.unobserve(e.target); } });
-  }, { threshold: 0.15 });
+  }, { threshold: 0, rootMargin: '0px 0px -40px 0px' });
   document.querySelectorAll('.stagger').forEach(el => staggerObs.observe(el));
+  // force stagger for visible
+  requestAnimationFrame(() => {
+    document.querySelectorAll('.stagger').forEach(el => {
+      const r = el.getBoundingClientRect();
+      if (r.top < window.innerHeight) { el.classList.add('in'); staggerObs.unobserve(el); }
+    });
+  });
 
   // ===== Glow cards =====
   document.querySelectorAll('#projectsGrid article, #skillsGrid .glass').forEach(el => el.classList.add('glow-card'));
@@ -1143,7 +1186,7 @@
       requestAnimationFrame(step);
       counterObs.unobserve(el);
     });
-  }, { threshold: .5 });
+  }, { threshold: 0.2 });
   document.querySelectorAll('.count-val').forEach(el => counterObs.observe(el));
 
   // ===== Ripple on click =====
