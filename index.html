@@ -384,8 +384,7 @@
                 <a href="#" class="w-9 h-9 grid place-items-center rounded-full glass hover:bg-white/10 transition" aria-label="LinkedIn"><i class="devicon-linkedin-plain text-blue-400"></i></a>
               </div>
             </div>
-            <div class="mt-4 grid grid-cols-3 gap-2 text-center text-[11px]">
-              <div class="glass rounded-lg py-2"><div class="text-slate-400" data-i18n="hero.tag1">Born</div><div class="font-semibold mt-0.5">17 Feb 2003</div></div>
+            <div class="mt-4 grid grid-cols-2 gap-2 text-center text-[11px]">
               <div class="glass rounded-lg py-2"><div class="text-slate-400" data-i18n="hero.tag2">Based</div><div class="font-semibold mt-0.5">Indonesia</div></div>
               <div class="glass rounded-lg py-2"><div class="text-slate-400" data-i18n="hero.tag3">Lang</div><div class="font-semibold mt-0.5">ID · EN</div></div>
             </div>
@@ -455,7 +454,7 @@
       <div class="grid md:grid-cols-3 gap-6">
         <div class="reveal md:col-span-2 glass rounded-3xl p-8">
           <p class="text-slate-300 leading-relaxed text-lg" data-i18n="about.p1">
-            I'm <b>Moh Rafi Akbar</b>, born February 17, 2003. A relentlessly curious fullstack engineer who lives at the intersection of design, code, and product thinking. I believe great software is invisible — it just feels right.
+            I'm <b>Galante Marreti</b>, a relentlessly curious fullstack engineer who lives at the intersection of design, code, and product thinking. I believe great software is invisible — it just feels right.
           </p>
           <p class="mt-4 text-slate-400 leading-relaxed" data-i18n="about.p2">
             I enthusiastically use English as my working language and switch fluidly between Bahasa Indonesia and English. Over the past year and a half I've shipped production systems across two continents, learning that great engineering is 20% syntax and 80% empathy — for users, teammates, and the next dev who reads your code.
@@ -599,20 +598,7 @@
           </div>
         </div>
 
-        <!-- item 3 -->
-        <div class="reveal relative md:grid md:grid-cols-2 md:gap-10">
-          <span class="absolute left-3 md:left-1/2 -translate-x-1/2 top-2 w-4 h-4 rounded-full bg-pink-400 tl-dot"></span>
-          <div class="md:text-right md:pr-12">
-            <div class="text-xs font-mono text-slate-400">2021 — 2024</div>
-            <h3 class="font-display text-2xl font-bold mt-1" data-i18n="exp.eduTitle">B.Sc. Informatics</h3>
-            <div class="text-pink-400 font-semibold" data-i18n="exp.eduOrg">Self-taught + University · Indonesia</div>
-          </div>
-          <div class="glass rounded-2xl p-6 md:ml-12 mt-3 md:mt-0">
-            <p class="text-slate-300" data-i18n="exp.eduP">
-              Built &gt; 20 personal projects, contributed to OSS, won regional hackathons. Studied algorithms, distributed systems, and design.
-            </p>
-          </div>
-        </div>
+
       </div>
     </div>
   </section>
@@ -681,7 +667,7 @@
       'hero.online':'Online · Coding','hero.role':'Senior Fullstack Engineer',
       'hero.tag1':'Born','hero.tag2':'Based','hero.tag3':'Lang','hero.scroll':'scroll',
       'about.title':'Crafting digital products with <span class="text-gradient">obsession</span> &amp; precision.',
-      'about.p1':"I'm <b>Galante Marreti</b>, born February 17, 2003. A relentlessly curious fullstack engineer who lives at the intersection of design, code, and product thinking. I believe great software is invisible — it just feels right.",
+      'about.p1':"I'm <b>Galante Marreti</b>, a relentlessly curious fullstack engineer who lives at the intersection of design, code, and product thinking. I believe great software is invisible — it just feels right.",
       'about.p2':"I enthusiastically use English as my working language and switch fluidly between Bahasa Indonesia and English. Over the past year and a half I've shipped production systems across two continents, learning that great engineering is 20% syntax and 80% empathy — for users, teammates, and the next dev who reads your code.",
       'about.f1t':'Performance-first','about.f1d':'Sub-100ms p99, lighthouse 100s.',
       'about.f2t':'Design-driven','about.f2d':'Pixel-perfect, accessible, motion-rich UI.',
@@ -719,7 +705,7 @@
       'hero.online':'Online · Coding','hero.role':'Senior Fullstack Engineer',
       'hero.tag1':'Lahir','hero.tag2':'Domisili','hero.tag3':'Bahasa','hero.scroll':'gulir',
       'about.title':'Membangun produk digital dengan <span class="text-gradient">obsesi</span> &amp; presisi.',
-      'about.p1':'Saya <b>Galante Marreti</b>, lahir 17 Februari 2003. Fullstack engineer yang sangat penasaran, hidup di persimpangan desain, kode, dan product thinking. Software yang hebat itu tak terlihat — ia hanya terasa benar.',
+      'about.p1':'Saya <b>Galante Marreti</b>, fullstack engineer yang sangat penasaran, hidup di persimpangan desain, kode, dan product thinking. Software yang hebat itu tak terlihat — ia hanya terasa benar.',
       'about.p2':'Saya antusias menggunakan bahasa Inggris sebagai bahasa kerja, dan luwes berpindah antara Bahasa Indonesia dan Inggris. Selama 1,5 tahun terakhir saya merilis sistem produksi di dua benua — belajar bahwa engineering hebat itu 20% sintaks, 80% empati.',
       'about.f1t':'Performa utama','about.f1d':'p99 sub-100ms, Lighthouse 100.',
       'about.f2t':'Berorientasi desain','about.f2d':'Pixel-perfect, aksesibel, kaya motion.',
@@ -858,12 +844,12 @@
 
   // ===== Projects =====
   const projects = [
-    { title:'NebulaCommerce',     tag:'SaaS · Edge',    desc:{en:'Headless e-commerce platform with edge-rendered storefronts. 12k req/s sustained.',id:'Platform e-commerce headless dengan storefront edge-rendered. 12k req/s stabil.'}, stack:['Next.js','Go','Postgres','Redis'], color:'from-blue-500 to-fuchsia-500' },
-    { title:'PulseTrade',         tag:'Realtime',       desc:{en:'Realtime crypto trading dashboard with sub-50ms WebSocket pipeline.',id:'Dashboard trading kripto realtime dengan pipeline WebSocket sub-50ms.'}, stack:['Rust','React','TimescaleDB'], color:'from-emerald-500 to-cyan-500' },
-    { title:'Lumen AI',           tag:'AI · LLM',       desc:{en:'Multi-agent AI workflow builder with custom tool-calling runtime.',id:'Builder workflow AI multi-agent dengan runtime tool-calling kustom.'}, stack:['TypeScript','Python','LangGraph'], color:'from-fuchsia-500 to-pink-500' },
-    { title:'Skylight DevOps',    tag:'Infra',          desc:{en:'GitOps platform: preview envs in 8s on a managed K8s fleet.',id:'Platform GitOps: preview env dalam 8 detik di K8s fleet ter-manage.'}, stack:['Go','Kubernetes','gRPC'], color:'from-orange-500 to-red-500' },
-    { title:'Kawan Belajar',      tag:'EdTech · ID',    desc:{en:'Indonesian micro-learning app — 50k+ MAU, offline-first PWA.',id:'Aplikasi micro-learning lokal — 50k+ MAU, PWA offline-first.'}, stack:['Next.js','Supabase','PWA'], color:'from-amber-400 to-pink-500' },
-    { title:'Vortex 3D',          tag:'WebGL · Fun',    desc:{en:'Interactive 3D portfolio template with React Three Fiber & shaders.',id:'Template portofolio 3D interaktif pakai React Three Fiber & shader.'}, stack:['R3F','GLSL','Three.js'], color:'from-cyan-400 to-blue-600' },
+    { title:'AutoScraper Pro',    tag:'Python · Scraping', desc:{en:'Async web scraper with rotating proxies, CAPTCHA bypass, and structured data export to JSON/CSV/DB.',id:'Scraper async dengan rotating proxy, bypass CAPTCHA, dan ekspor data terstruktur ke JSON/CSV/DB.'}, stack:['Python','aiohttp','Playwright','PostgreSQL'], color:'from-blue-500 to-fuchsia-500' },
+    { title:'Lumen AI',           tag:'AI · LLM',       desc:{en:'Multi-agent AI workflow builder with custom tool-calling runtime and streaming output.',id:'Builder workflow AI multi-agent dengan runtime tool-calling kustom dan streaming output.'}, stack:['Python','LangGraph','FastAPI','OpenAI'], color:'from-fuchsia-500 to-pink-500' },
+    { title:'DataPipeline ML',    tag:'Python · ML',    desc:{en:'End-to-end ML pipeline — data ingestion, feature engineering, model training & auto-deployment via CI.',id:'Pipeline ML end-to-end — ingesti data, feature engineering, training & auto-deploy via CI.'}, stack:['Python','Pandas','Scikit-learn','Airflow'], color:'from-emerald-500 to-cyan-500' },
+    { title:'TeleBot Suite',      tag:'Python · Bot',   desc:{en:'Modular Telegram bot framework with plugin system, scheduler, and admin dashboard.',id:'Framework bot Telegram modular dengan sistem plugin, scheduler, dan dashboard admin.'}, stack:['Python','python-telegram-bot','SQLite','FastAPI'], color:'from-amber-400 to-pink-500' },
+    { title:'Kawan Belajar',      tag:'EdTech · ID',    desc:{en:'Indonesian micro-learning app — 50k+ MAU, offline-first PWA.',id:'Aplikasi micro-learning lokal — 50k+ MAU, PWA offline-first.'}, stack:['Python','Django','Next.js','Supabase'], color:'from-orange-500 to-red-500' },
+    { title:'PulseMonitor',       tag:'Realtime · API', desc:{en:'Real-time server & API monitoring dashboard with alerting, log aggregation, and anomaly detection.',id:'Dashboard monitoring server & API realtime dengan alerting, log aggregation, dan deteksi anomali.'}, stack:['Python','FastAPI','WebSocket','Redis'], color:'from-cyan-400 to-blue-600' },
   ];
   const pg = document.getElementById('projectsGrid');
   projects.forEach((p,i) => {
@@ -1015,36 +1001,36 @@
 
   // ===== Project Modal =====
   const modalData = [
-    { title:'NebulaCommerce', tag:'SaaS · Edge', color:'from-blue-500 to-fuchsia-500',
-      en:'Full headless e-commerce platform with edge-rendered storefronts, multi-tenant architecture, and real-time inventory sync. Handles 12k sustained req/s with sub-30ms TTFB globally.',
-      id:'Platform e-commerce headless dengan storefront edge-rendered, arsitektur multi-tenant, dan sinkronisasi inventori realtime. Menangani 12k req/s dengan TTFB sub-30ms secara global.',
-      stack:['Next.js 14','Go','PostgreSQL','Redis','Vercel Edge','Stripe'],
-      stats:[{l:'req/s',v:'12k'},{l:'TTFB',v:'<30ms'},{l:'Uptime',v:'99.99%'}] },
-    { title:'PulseTrade', tag:'Realtime', color:'from-emerald-500 to-cyan-500',
-      en:'Crypto trading dashboard with sub-50ms WebSocket data pipeline. Built with Rust for the core engine, React for the UI. Supports 50+ trading pairs with live order-book depth charts.',
-      id:'Dashboard trading kripto dengan pipeline data WebSocket sub-50ms. Dibangun dengan Rust untuk core engine dan React untuk UI. Mendukung 50+ pasangan trading dengan grafik order-book live.',
-      stack:['Rust','React','WebSocket','TimescaleDB','Redis Streams','Recharts'],
-      stats:[{l:'Latency',v:'<50ms'},{l:'Pairs',v:'50+'},{l:'Users',v:'2k+'}] },
+    { title:'AutoScraper Pro', tag:'Python · Scraping', color:'from-blue-500 to-fuchsia-500',
+      en:'Async web scraper with rotating proxies, CAPTCHA bypass, JS rendering via Playwright, and structured export to JSON/CSV/PostgreSQL. Handles millions of records per run.',
+      id:'Web scraper async dengan rotating proxy, bypass CAPTCHA, render JS via Playwright, dan ekspor terstruktur ke JSON/CSV/PostgreSQL. Memproses jutaan record per run.',
+      stack:['Python','aiohttp','Playwright','PostgreSQL','Redis','Docker'],
+      stats:[{l:'Records/run',v:'1M+'},{l:'Proxy pool',v:'500+'},{l:'Speed',v:'10k/min'}] },
     { title:'Lumen AI', tag:'AI · LLM', color:'from-fuchsia-500 to-pink-500',
-      en:'Visual multi-agent AI workflow builder. Drag & drop nodes that represent LLM calls, tools, and logic branches. Features a custom runtime with streaming, tool-use, and memory.',
-      id:'Builder workflow AI multi-agent visual. Drag & drop node yang merepresentasikan LLM call, tools, dan cabang logika. Dengan runtime kustom yang mendukung streaming, tool-use, dan memori.',
-      stack:['TypeScript','Python','LangGraph','FastAPI','React Flow','OpenAI'],
-      stats:[{l:'Node types',v:'24'},{l:'Avg exec',v:'1.2s'},{l:'Agents',v:'∞'}] },
-    { title:'Skylight DevOps', tag:'Infra', color:'from-orange-500 to-red-500',
-      en:'GitOps platform that spins up isolated preview environments in 8 seconds on a managed Kubernetes fleet. Push a branch, get a URL. Full env teardown on PR merge.',
-      id:'Platform GitOps yang menjalankan preview environment terisolasi dalam 8 detik di K8s fleet ter-manage. Push branch, dapat URL. Teardown otomatis saat PR di-merge.',
-      stack:['Go','Kubernetes','gRPC','ArgoCD','Terraform','GitHub Actions'],
-      stats:[{l:'Spin-up',v:'8s'},{l:'Envs/day',v:'120+'},{l:'Cost save',v:'60%'}] },
-    { title:'Kawan Belajar', tag:'EdTech · ID', color:'from-amber-400 to-pink-500',
-      en:'Indonesian micro-learning PWA with offline-first architecture. 50k+ MAU. Features spaced-repetition quizzes, video lessons, and a social learning feed — all installable, works offline.',
-      id:'PWA micro-learning Indonesia dengan arsitektur offline-first. 50k+ MAU. Fitur kuis spaced-repetition, video lesson, dan feed belajar sosial — bisa diinstall, bekerja offline.',
-      stack:['Next.js','Supabase','PWA','Workbox','Zustand','Framer Motion'],
+      en:'Multi-agent AI workflow builder with custom tool-calling runtime, streaming output, and persistent memory. Supports OpenAI, Anthropic, and local models.',
+      id:'Builder workflow AI multi-agent dengan runtime tool-calling kustom, streaming output, dan memori persisten. Mendukung OpenAI, Anthropic, dan model lokal.',
+      stack:['Python','LangGraph','FastAPI','OpenAI','Anthropic','SQLite'],
+      stats:[{l:'Agent types',v:'12'},{l:'Avg exec',v:'1.2s'},{l:'Models',v:'8+'}] },
+    { title:'DataPipeline ML', tag:'Python · ML', color:'from-emerald-500 to-cyan-500',
+      en:'End-to-end ML pipeline — automated data ingestion, feature engineering, model training, evaluation, and auto-deployment via CI/CD. Includes drift detection and retraining triggers.',
+      id:'Pipeline ML end-to-end — ingesti data otomatis, feature engineering, training, evaluasi, dan auto-deploy via CI/CD. Termasuk deteksi drift dan trigger retraining.',
+      stack:['Python','Pandas','Scikit-learn','Airflow','MLflow','Docker'],
+      stats:[{l:'Models',v:'15+'},{l:'Accuracy',v:'94%'},{l:'Deploy',v:'auto'}] },
+    { title:'TeleBot Suite', tag:'Python · Bot', color:'from-amber-400 to-pink-500',
+      en:'Modular Telegram bot framework with plugin architecture, job scheduler, inline menus, and an admin dashboard. Used by 3k+ active users.',
+      id:'Framework bot Telegram modular dengan arsitektur plugin, scheduler, menu inline, dan dashboard admin. Digunakan oleh 3k+ pengguna aktif.',
+      stack:['Python','python-telegram-bot','SQLite','FastAPI','APScheduler'],
+      stats:[{l:'Active users',v:'3k+'},{l:'Plugins',v:'20+'},{l:'Uptime',v:'99.9%'}] },
+    { title:'Kawan Belajar', tag:'EdTech · ID', color:'from-orange-500 to-red-500',
+      en:'Indonesian micro-learning app — 50k+ MAU, offline-first PWA with Python/Django backend, spaced-repetition quizzes, and video lessons.',
+      id:'Aplikasi micro-learning lokal — 50k+ MAU, PWA offline-first dengan backend Python/Django, kuis spaced-repetition, dan video lesson.',
+      stack:['Python','Django','Next.js','Supabase','Celery','Redis'],
       stats:[{l:'MAU',v:'50k+'},{l:'Retention',v:'68%'},{l:'Offline',v:'100%'}] },
-    { title:'Vortex 3D', tag:'WebGL · Fun', color:'from-cyan-400 to-blue-600',
-      en:'Interactive 3D portfolio template powered by React Three Fiber and custom GLSL shaders. Includes particle systems, post-processing bloom, and physics-based interactions.',
-      id:'Template portofolio 3D interaktif dengan React Three Fiber dan shader GLSL kustom. Termasuk sistem partikel, post-processing bloom, dan interaksi berbasis fisika.',
-      stack:['React Three Fiber','GLSL','Three.js','@react-three/postprocessing','Rapier'],
-      stats:[{l:'FPS',v:'60'},{l:'Shaders',v:'12'},{l:'Stars',v:'1.2k'}] },
+    { title:'PulseMonitor', tag:'Realtime · API', color:'from-cyan-400 to-blue-600',
+      en:'Real-time server & API monitoring dashboard with alerting, log aggregation, and Python-powered anomaly detection using statistical models.',
+      id:'Dashboard monitoring server & API realtime dengan alerting, log aggregation, dan deteksi anomali berbasis Python menggunakan model statistik.',
+      stack:['Python','FastAPI','WebSocket','Redis','PostgreSQL','Chart.js'],
+      stats:[{l:'Metrics/sec',v:'50k'},{l:'Alert delay',v:'<1s'},{l:'Uptime',v:'99.99%'}] },
   ];
 
   const modal = document.getElementById('modal');
