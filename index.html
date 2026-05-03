@@ -522,6 +522,9 @@
           <p class="mt-4 text-slate-400 leading-relaxed" data-i18n="about.p2">
             I enthusiastically use English as my working language and switch fluidly between Bahasa Indonesia and English. Over the past year and a half I've shipped production systems across two continents, learning that great engineering is 20% syntax and 80% empathy — for users, teammates, and the next dev who reads your code.
           </p>
+          <p class="mt-4 text-slate-400 leading-relaxed" data-i18n="about.p3">
+            Outside of work, I founded <b class="text-brand-400">Hastle Group</b> — the #1 developer community on Telegram, bringing together thousands of developers across Indonesia to share knowledge, collab on projects, and grow together.
+          </p>
 
           <div class="mt-8 grid sm:grid-cols-2 gap-4">
             <div class="flex items-start gap-3"><div class="w-9 h-9 grid place-items-center rounded-lg bg-brand-500/15 text-brand-400">⚡</div><div><div class="font-semibold" data-i18n="about.f1t">Performance-first</div><div class="text-sm text-slate-400" data-i18n="about.f1d">Sub-100ms p99, lighthouse 100s.</div></div></div>
@@ -534,14 +537,15 @@
         <div class="reveal glass rounded-3xl p-8">
           <div class="text-xs font-mono text-slate-400 mb-3">$ whoami</div>
           <pre class="text-sm font-mono leading-7 text-slate-300 whitespace-pre-wrap">
-<span class="text-pink-400">const</span> <span class="text-brand-300">rafi</span> = {
-  <span class="text-emerald-300">name</span>:    <span class="text-amber-300">"Galante Marreti"</span>,
-  <span class="text-emerald-300">born</span>:    <span class="text-amber-300">"2003-02-17"</span>,
-  <span class="text-emerald-300">role</span>:    <span class="text-amber-300">"Senior Fullstack"</span>,
-  <span class="text-emerald-300">stack</span>:   [<span class="text-amber-300">"TS"</span>, <span class="text-amber-300">"Next"</span>, <span class="text-amber-300">"Go"</span>, <span class="text-amber-300">"Rust"</span>],
-  <span class="text-emerald-300">cities</span>:  [<span class="text-amber-300">"Yogyakarta"</span>, <span class="text-amber-300">"Amsterdam"</span>],
-  <span class="text-emerald-300">langs</span>:   [<span class="text-amber-300">"id"</span>, <span class="text-amber-300">"en"</span>],
-  <span class="text-emerald-300">coffee</span>:  <span class="text-fuchsia-400">true</span>
+<span class="text-pink-400">const</span> <span class="text-brand-300">galante</span> = {
+  <span class="text-emerald-300">name</span>:      <span class="text-amber-300">"Galante Marreti"</span>,
+  <span class="text-emerald-300">role</span>:      <span class="text-amber-300">"Senior Fullstack"</span>,
+  <span class="text-emerald-300">stack</span>:     [<span class="text-amber-300">"Python"</span>, <span class="text-amber-300">"FastAPI"</span>, <span class="text-amber-300">"Next.js"</span>],
+  <span class="text-emerald-300">cities</span>:    [<span class="text-amber-300">"Yogyakarta"</span>, <span class="text-amber-300">"Amsterdam"</span>],
+  <span class="text-emerald-300">founder</span>:   <span class="text-amber-300">"Hastle Group 🚀"</span>,
+  <span class="text-emerald-300">community</span>: <span class="text-amber-300">"#1 Telegram Dev"</span>,
+  <span class="text-emerald-300">langs</span>:     [<span class="text-amber-300">"id"</span>, <span class="text-amber-300">"en"</span>],
+  <span class="text-emerald-300">coffee</span>:    <span class="text-fuchsia-400">true</span>
 };</pre>
         </div>
       </div>
@@ -661,6 +665,32 @@
           </div>
         </div>
 
+        <!-- item 3 — Hastle Group -->
+        <div class="reveal relative md:grid md:grid-cols-2 md:gap-10 mb-14">
+          <span class="absolute left-3 md:left-1/2 -translate-x-1/2 top-2 w-4 h-4 rounded-full bg-emerald-400 tl-dot"></span>
+          <div class="md:text-right md:pr-12">
+            <div class="text-xs font-mono text-slate-400">2024 — Present</div>
+            <h3 class="font-display text-2xl font-bold mt-1">Founder &amp; Community Lead</h3>
+            <div class="text-emerald-400 font-semibold">Hastle Group · Telegram 🚀</div>
+          </div>
+          <div class="glass rounded-2xl p-6 md:ml-12 mt-3 md:mt-0 border border-emerald-500/20">
+            <div class="inline-flex items-center gap-2 bg-emerald-500/10 text-emerald-400 text-xs font-semibold px-3 py-1 rounded-full mb-4">#1 Dev Community · Telegram Indonesia</div>
+            <p class="text-slate-300" data-i18n="exp.hastleP">
+              Founded and scaled <b>Hastle Group</b> to become the #1 developer community on Telegram — a thriving hub for Indonesian developers to collaborate, share knowledge, and build together.
+            </p>
+            <ul class="mt-4 space-y-2 text-sm text-slate-400">
+              <li data-i18n="exp.hastleL1">▸ Grew community to thousands of active members organically.</li>
+              <li data-i18n="exp.hastleL2">▸ Organized dev talks, code challenges, and project collabs.</li>
+              <li data-i18n="exp.hastleL3">▸ Built bots &amp; automation tools to manage &amp; engage the community.</li>
+            </ul>
+            <div class="mt-4 flex flex-wrap gap-2 text-[11px]">
+              <span class="px-2 py-1 rounded-full glass">Community Building</span>
+              <span class="px-2 py-1 rounded-full glass">Python Bots</span>
+              <span class="px-2 py-1 rounded-full glass">Telegram API</span>
+              <span class="px-2 py-1 rounded-full glass">Leadership</span>
+            </div>
+          </div>
+        </div>
 
       </div>
     </div>
@@ -732,6 +762,7 @@
       'about.title':'Crafting digital products with <span class="text-gradient">obsession</span> &amp; precision.',
       'about.p1':"I'm <b>Galante Marreti</b>, a relentlessly curious fullstack engineer who lives at the intersection of design, code, and product thinking. I believe great software is invisible — it just feels right.",
       'about.p2':"I enthusiastically use English as my working language and switch fluidly between Bahasa Indonesia and English. Over the past year and a half I've shipped production systems across two continents, learning that great engineering is 20% syntax and 80% empathy — for users, teammates, and the next dev who reads your code.",
+      'about.p3':"Outside of work, I founded <b class=\"text-brand-400\">Hastle Group</b> — the #1 developer community on Telegram, bringing together thousands of developers across Indonesia to share knowledge, collab on projects, and grow together.",
       'about.f1t':'Performance-first','about.f1d':'Sub-100ms p99, lighthouse 100s.',
       'about.f2t':'Design-driven','about.f2d':'Pixel-perfect, accessible, motion-rich UI.',
       'about.f3t':'Cloud-native','about.f3d':'Docker, K8s, AWS, edge & serverless.',
@@ -749,7 +780,10 @@
       'exp.jogL1':'▸ Led migration of legacy monolith to Next.js + Go microservices.',
       'exp.jogL2':'▸ Designed PostgreSQL schemas serving 300k+ daily active users.',
       'exp.jogL3':'▸ Mentored 3 junior devs; introduced code-review & CI standards.',
-      'exp.eduTitle':'B.Sc. Informatics','exp.eduOrg':'Self-taught + University · Indonesia',
+      'exp.hastleP':'Founded and scaled <b>Hastle Group</b> to become the #1 developer community on Telegram — a thriving hub for Indonesian developers to collaborate, share knowledge, and build together.',
+      'exp.hastleL1':'▸ Grew community to thousands of active members organically.',
+      'exp.hastleL2':'▸ Organized dev talks, code challenges, and project collabs.',
+      'exp.hastleL3':'▸ Built bots & automation tools to manage & engage the community.',,'exp.eduOrg':'Self-taught + University · Indonesia',
       'exp.eduP':'Built > 20 personal projects, contributed to OSS, won regional hackathons. Studied algorithms, distributed systems, and design.',
       'proj.title':'Selected <span class="text-gradient">work</span>.',
       'proj.sub':"A handful of products I'm proud of — from edge-rendered SaaS to realtime trading dashboards.",
@@ -787,7 +821,10 @@
       'exp.jogL1':'▸ Memimpin migrasi monolit lama ke Next.js + microservices Go.',
       'exp.jogL2':'▸ Merancang skema PostgreSQL untuk 300k+ pengguna aktif harian.',
       'exp.jogL3':'▸ Mentor 3 junior; mengenalkan standar code-review & CI.',
-      'exp.eduTitle':'S1 Informatika','exp.eduOrg':'Otodidak + Universitas · Indonesia',
+      'exp.hastleP':'Mendirikan dan mengembangkan <b>Hastle Group</b> menjadi komunitas developer #1 di Telegram — pusat kolaborasi developer Indonesia untuk berbagi ilmu, proyek bersama, dan tumbuh bersama.',
+      'exp.hastleL1':'▸ Mengembangkan komunitas hingga ribuan anggota aktif secara organik.',
+      'exp.hastleL2':'▸ Mengadakan dev talk, code challenge, dan kolaborasi proyek.',
+      'exp.hastleL3':'▸ Membangun bot & tools otomasi untuk manajemen & engagement komunitas.',,'exp.eduOrg':'Otodidak + Universitas · Indonesia',
       'exp.eduP':'Membangun >20 proyek pribadi, kontribusi OSS, juara hackathon regional. Mempelajari algoritma, distributed systems, dan desain.',
       'proj.title':'Karya <span class="text-gradient">terpilih</span>.',
       'proj.sub':'Beberapa produk yang saya banggakan — dari SaaS edge-rendered sampai dashboard trading realtime.',
