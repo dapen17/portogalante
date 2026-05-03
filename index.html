@@ -1,0 +1,1198 @@
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Galante Marreti — Senior Fullstack Engineer</title>
+  <meta name="description" content="Portfolio of Galante Marreti — Senior-level Fullstack Engineer specialized in TypeScript, Next.js, Go, Rust, and Cloud-Native systems."/>
+  <link rel="icon" href="pfp.jpg"/>
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'ui-sans-serif', 'system-ui'],
+            mono: ['JetBrains Mono', 'ui-monospace'],
+            display: ['"Space Grotesk"', 'Inter']
+          },
+          colors: {
+            brand: {
+              50:'#eef9ff',100:'#d9f1ff',200:'#bce5ff',300:'#8ed4ff',
+              400:'#58bbff',500:'#2f9dff',600:'#1a7ef0',700:'#1865c4',
+              800:'#1a559b',900:'#1c4a7c'
+            }
+          },
+          animation: {
+            'gradient-x': 'gradient-x 8s ease infinite',
+            'float': 'float 6s ease-in-out infinite',
+            'spin-slow': 'spin 18s linear infinite',
+            'blob': 'blob 14s infinite',
+            'shine': 'shine 3s linear infinite'
+          },
+          keyframes: {
+            'gradient-x': {
+              '0%,100%': { 'background-position': '0% 50%' },
+              '50%':     { 'background-position': '100% 50%' }
+            },
+            'float': {
+              '0%,100%': { transform: 'translateY(0)' },
+              '50%':     { transform: 'translateY(-12px)' }
+            },
+            'blob': {
+              '0%':   { transform: 'translate(0,0) scale(1)' },
+              '33%':  { transform: 'translate(40px,-30px) scale(1.1)' },
+              '66%':  { transform: 'translate(-30px,20px) scale(0.95)' },
+              '100%': { transform: 'translate(0,0) scale(1)' }
+            },
+            'shine': {
+              '0%':   { 'background-position': '-200% center' },
+              '100%': { 'background-position': '200% center' }
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+
+  <!-- Devicons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+
+  <style>
+    html, body { font-family: 'Inter', sans-serif; }
+    ::selection { background: #1a7ef0; color: #fff; }
+
+    /* Custom scrollbar */
+    ::-webkit-scrollbar { width: 10px; height: 10px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: linear-gradient(180deg,#1a7ef0,#8b5cf6); border-radius: 8px; }
+
+    /* Animated grid background */
+    .bg-grid {
+      background-image:
+        linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
+    }
+    html:not(.dark) .bg-grid {
+      background-image:
+        linear-gradient(to right, rgba(0,0,0,0.06) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0,0,0,0.06) 1px, transparent 1px);
+    }
+
+    /* Glassmorphism */
+    .glass {
+      background: rgba(255,255,255,0.04);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    html:not(.dark) .glass {
+      background: rgba(255,255,255,0.6);
+      border: 1px solid rgba(0,0,0,0.06);
+    }
+
+    /* Gradient text */
+    .text-gradient {
+      background: linear-gradient(90deg,#58bbff 0%,#8b5cf6 50%,#ec4899 100%);
+      -webkit-background-clip: text; background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-size: 200% auto;
+      animation: shine 4s linear infinite;
+    }
+
+    /* Gradient border button */
+    .btn-grad {
+      position: relative; isolation: isolate; overflow: hidden;
+    }
+    .btn-grad::before {
+      content:''; position:absolute; inset:-2px; z-index:-1;
+      background: conic-gradient(from 0deg,#58bbff,#8b5cf6,#ec4899,#58bbff);
+      animation: spin 4s linear infinite;
+      filter: blur(6px);
+      opacity:.85;
+    }
+
+    /* Scroll reveal */
+    .reveal { opacity: 0; transform: translateY(40px); transition: all .9s cubic-bezier(.22,1,.36,1); }
+    .reveal.in { opacity: 1; transform: none; }
+
+    /* Tilt card */
+    .tilt { transform-style: preserve-3d; transition: transform .25s ease; }
+    .tilt-inner { transform: translateZ(40px); }
+
+    /* Marquee */
+    @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    .marquee-track { animation: marquee 30s linear infinite; }
+
+    /* Glow ring */
+    .glow-ring::after {
+      content:''; position:absolute; inset:-3px; border-radius:9999px;
+      background: conic-gradient(from 0deg,#58bbff,#8b5cf6,#ec4899,#58bbff);
+      animation: spin 6s linear infinite;
+      z-index:-1; filter: blur(6px);
+    }
+
+    /* Cursor */
+    .cursor-dot, .cursor-ring {
+      position: fixed; top:0; left:0; pointer-events:none; z-index:9999;
+      transform: translate(-50%,-50%); border-radius:9999px;
+      transition: width .2s, height .2s, background .2s;
+    }
+    .cursor-dot { width:8px; height:8px; background:#58bbff; }
+    .cursor-ring { width:36px; height:36px; border:1.5px solid rgba(139,92,246,.6); transition: transform .12s ease-out, width .2s, height .2s; }
+    @media (max-width: 768px) { .cursor-dot,.cursor-ring { display:none; } }
+
+    /* Timeline */
+    .tl-line { background: linear-gradient(180deg,#58bbff,#8b5cf6,#ec4899); }
+    .tl-dot { box-shadow: 0 0 0 4px rgba(88,187,255,.15), 0 0 24px #58bbff; }
+
+    /* Skill bar */
+    .bar { position:relative; height:8px; border-radius:9999px; background: rgba(255,255,255,.08); overflow:hidden; }
+    html:not(.dark) .bar { background: rgba(0,0,0,.08); }
+    .bar > i {
+      display:block; height:100%; width:0;
+      background: linear-gradient(90deg,#58bbff,#8b5cf6,#ec4899);
+      transition: width 1.6s cubic-bezier(.22,1,.36,1);
+      border-radius:9999px;
+    }
+
+    /* Noise overlay */
+    .noise::before {
+      content:''; position:fixed; inset:0; pointer-events:none; z-index:1;
+      background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/></svg>");
+      opacity:.04; mix-blend-mode: overlay;
+    }
+
+    /* Project card hover */
+    .proj { transition: transform .4s cubic-bezier(.22,1,.36,1); }
+    .proj:hover { transform: translateY(-8px); }
+    .proj .img-wrap { background: linear-gradient(135deg,#1a7ef0,#8b5cf6,#ec4899); background-size: 300% 300%; animation: gradient-x 10s ease infinite; }
+
+    /* Typewriter caret */
+    .caret::after {
+      content:'|'; margin-left: 2px; color:#58bbff;
+      animation: blink 1s step-end infinite;
+    }
+    @keyframes blink { 50% { opacity: 0; } }
+
+    /* Section divider svg */
+    .divider svg { display:block; width:100%; height:80px; }
+
+    /* Hide scrollbar in marquee container */
+    .no-scrollbar::-webkit-scrollbar { display:none; }
+
+    /* Ripple */
+    .ripple-wrap { position:relative; overflow:hidden; }
+    .ripple { position:absolute; border-radius:50%; transform:scale(0); animation: ripple-anim .6s linear; pointer-events:none; background: rgba(255,255,255,0.2); }
+    @keyframes ripple-anim { to { transform: scale(4); opacity: 0; } }
+
+    /* Modal */
+    #modal { position:fixed; inset:0; z-index:9000; display:flex; align-items:center; justify-content:center; padding:1.5rem; }
+    #modal.hidden { display:none; }
+    #modal-backdrop { position:absolute; inset:0; background:rgba(0,0,0,0.7); backdrop-filter:blur(10px); }
+    #modal-box { position:relative; z-index:1; width:100%; max-width:560px; animation: modal-in .35s cubic-bezier(.22,1,.36,1); }
+    @keyframes modal-in { from { opacity:0; transform:scale(.92) translateY(30px); } to { opacity:1; transform:none; } }
+
+    /* Terminal easter egg */
+    #terminal { position:fixed; bottom:2rem; right:2rem; z-index:8000; width:min(480px,calc(100vw - 2rem)); animation: modal-in .35s cubic-bezier(.22,1,.36,1); }
+    #terminal.hidden { display:none; }
+    #term-output { height:200px; overflow-y:auto; scroll-behavior:smooth; }
+    #term-output::-webkit-scrollbar { width:4px; }
+    #term-output::-webkit-scrollbar-thumb { background:#1a7ef0; border-radius:4px; }
+
+    /* Tooltip */
+    [data-tip] { position:relative; cursor:pointer; }
+    [data-tip]::after { content: attr(data-tip); position:absolute; bottom:calc(100% + 8px); left:50%; transform:translateX(-50%) scale(.85); background:#0f1728; border:1px solid rgba(255,255,255,0.1); color:#e2e8f0; font-size:11px; white-space:nowrap; padding:4px 10px; border-radius:8px; pointer-events:none; opacity:0; transition:opacity .2s, transform .2s; z-index:99; }
+    [data-tip]:hover::after { opacity:1; transform:translateX(-50%) scale(1); }
+
+    /* Counter */
+    .count-val { display:inline-block; }
+
+    /* Nav active */
+    nav a.nav-active { background: rgba(255,255,255,0.12); }
+
+    /* Scroll progress */
+    #progress { position:fixed; top:0; left:0; height:2px; width:0%; background:linear-gradient(90deg,#58bbff,#8b5cf6,#ec4899); z-index:9999; transition:width .05s linear; }
+  </style>
+</head>
+
+<body class="bg-[#070712] text-slate-100 antialiased noise overflow-x-hidden transition-colors duration-500">
+
+  <!-- Custom cursor -->
+  <div class="cursor-ring"></div>
+  <div class="cursor-dot"></div>
+
+  <!-- Animated background -->
+  <div class="fixed inset-0 -z-10 overflow-hidden">
+    <div class="absolute -top-40 -left-40 w-[40rem] h-[40rem] rounded-full bg-brand-600/30 blur-3xl animate-blob"></div>
+    <div class="absolute top-1/3 -right-40 w-[36rem] h-[36rem] rounded-full bg-fuchsia-600/25 blur-3xl animate-blob" style="animation-delay:-4s"></div>
+    <div class="absolute bottom-0 left-1/3 w-[30rem] h-[30rem] rounded-full bg-pink-500/20 blur-3xl animate-blob" style="animation-delay:-8s"></div>
+    <div class="absolute inset-0 bg-grid"></div>
+    <canvas id="particles" class="absolute inset-0 w-full h-full"></canvas>
+  </div>
+
+  <!-- Scroll progress bar -->
+  <div id="progress"></div>
+
+  <!-- Project Modal -->
+  <div id="modal" class="hidden" role="dialog" aria-modal="true">
+    <div id="modal-backdrop"></div>
+    <div id="modal-box" class="glass rounded-3xl p-8">
+      <div class="flex items-start justify-between mb-5">
+        <div>
+          <div id="modal-tag" class="text-[11px] glass rounded-full px-2.5 py-1 inline-block mb-2"></div>
+          <h2 id="modal-title" class="font-display text-3xl font-bold"></h2>
+        </div>
+        <button id="modal-close" class="w-9 h-9 grid place-items-center rounded-full glass hover:bg-white/10 transition text-xl" aria-label="close">&times;</button>
+      </div>
+
+      <p id="modal-desc" class="text-slate-300 leading-relaxed mb-6"></p>
+      <div id="modal-stack" class="flex flex-wrap gap-2 text-[11px] mb-6"></div>
+      <div class="grid grid-cols-3 gap-3 text-center mb-6" id="modal-stats"></div>
+      <div class="flex gap-3">
+        <a href="https://t.me/Cloebe" target="_blank" rel="noopener noreferrer" class="btn-grad flex-1 py-3 rounded-full bg-[#070712] font-semibold text-sm text-center">Contact for demo →</a>
+        <button id="modal-close2" class="flex-1 py-3 rounded-full glass font-semibold text-sm hover:bg-white/10 transition">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Terminal Easter Egg -->
+  <div id="terminal" class="hidden">
+    <div class="glass rounded-2xl overflow-hidden shadow-2xl">
+      <div class="flex items-center gap-2 px-4 py-3 bg-white/5 border-b border-white/5">
+        <div class="flex gap-1.5">
+          <button id="term-close-btn" class="w-3 h-3 rounded-full bg-red-500 hover:bg-red-400 transition" title="close"></button>
+          <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+          <div class="w-3 h-3 rounded-full bg-emerald-500"></div>
+        </div>
+        <span class="text-xs font-mono text-slate-400 ml-2">galante@portfolio:~</span>
+      </div>
+      <div id="term-output" class="px-4 py-3 font-mono text-xs text-slate-300 space-y-1"></div>
+      <div class="flex items-center gap-2 px-4 py-2 border-t border-white/5">
+        <span class="text-brand-400 font-mono text-xs">❯</span>
+        <input id="term-input" type="text" class="flex-1 bg-transparent font-mono text-xs text-slate-100 outline-none placeholder-slate-600" placeholder="type 'help' then Enter" autocomplete="off" spellcheck="false"/>
+      </div>
+    </div>
+  </div>
+
+  <!-- NAV -->
+  <header class="fixed top-0 inset-x-0 z-40">
+    <nav class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="#home" class="flex items-center gap-2 group">
+        <span class="relative w-9 h-9 rounded-xl grid place-items-center font-display font-bold text-white"
+              style="background:conic-gradient(from 0deg,#58bbff,#8b5cf6,#ec4899,#58bbff)">
+          <span class="absolute inset-[2px] rounded-[10px] bg-[#070712] grid place-items-center">GM</span>
+        </span>
+        <span class="font-display font-bold tracking-tight text-lg hidden sm:block">Galante<span class="text-gradient">.dev</span></span>
+      </a>
+
+      <ul class="hidden md:flex items-center gap-1 glass rounded-full px-2 py-1.5 text-sm">
+        <li><a href="#home"        class="px-4 py-1.5 rounded-full hover:bg-white/10 transition" data-i18n="nav.home">Home</a></li>
+        <li><a href="#about"       class="px-4 py-1.5 rounded-full hover:bg-white/10 transition" data-i18n="nav.about">About</a></li>
+        <li><a href="#stack"       class="px-4 py-1.5 rounded-full hover:bg-white/10 transition" data-i18n="nav.stack">Stack</a></li>
+        <li><a href="#experience"  class="px-4 py-1.5 rounded-full hover:bg-white/10 transition" data-i18n="nav.exp">Experience</a></li>
+        <li><a href="#projects"    class="px-4 py-1.5 rounded-full hover:bg-white/10 transition" data-i18n="nav.projects">Projects</a></li>
+        <li><a href="#contact"     class="px-4 py-1.5 rounded-full hover:bg-white/10 transition" data-i18n="nav.contact">Contact</a></li>
+      </ul>
+
+      <div class="flex items-center gap-2">
+        <button id="langBtn" class="glass rounded-full px-3 py-1.5 text-xs font-semibold tracking-wide hover:bg-white/10 transition">EN</button>
+        <button id="themeBtn" class="glass rounded-full w-9 h-9 grid place-items-center hover:bg-white/10 transition" aria-label="theme">
+          <svg id="iconMoon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section id="home" class="relative min-h-screen flex items-center pt-28 pb-20">
+    <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center w-full">
+      <div class="reveal">
+        <div class="inline-flex items-center gap-2 glass rounded-full px-3 py-1.5 mb-6 text-xs">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+          <span data-i18n="hero.available">Available for senior fullstack roles</span>
+        </div>
+        <h1 class="font-display text-5xl sm:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-tight">
+          <span data-i18n="hero.hi">Hi, I'm</span>
+          <span class="block text-gradient">Galante Marreti</span>
+        </h1>
+        <p class="mt-4 text-xl sm:text-2xl text-slate-300 font-mono">
+          <span class="text-brand-400">&gt;</span>
+          <span id="typewriter" class="caret"></span>
+        </p>
+        <p class="mt-6 max-w-xl text-slate-400 leading-relaxed" data-i18n="hero.desc">
+          Senior-level fullstack engineer crafting performant, scalable, cloud-native products. Obsessed with clean architecture, beautiful UI, and shipping things that just work.
+        </p>
+
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a href="#projects" class="btn-grad inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#070712] font-semibold hover:scale-[1.03] transition">
+            <span data-i18n="hero.cta1">View My Work</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a href="https://t.me/Cloebe" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-6 py-3 rounded-full glass font-semibold hover:bg-white/10 transition">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 1 0 24 12 12 12 0 0 0 11.944 0zm6.069 7.24-1.995 9.4c-.15.658-.54.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.858.821z"/></svg>
+            <span data-i18n="hero.cta2">Let's Talk</span>
+          </a>
+        </div>
+
+        <div class="mt-10 grid grid-cols-3 gap-6 max-w-md">
+          <div data-tip="Click to explore projects" class="ripple-wrap rounded-xl p-2 hover:bg-white/5 transition cursor-pointer" onclick="document.getElementById('projects').scrollIntoView({behavior:'smooth'})">
+            <div class="text-3xl font-display font-bold text-gradient"><span class="count-val" data-target="20" data-suffix="+">0+</span></div>
+            <div class="text-xs text-slate-400 mt-1" data-i18n="hero.stat1">Projects shipped</div>
+          </div>
+          <div data-tip="Yogyakarta + Amsterdam" class="ripple-wrap rounded-xl p-2 hover:bg-white/5 transition cursor-pointer" onclick="document.getElementById('experience').scrollIntoView({behavior:'smooth'})">
+            <div class="text-3xl font-display font-bold text-gradient"><span class="count-val" data-target="1" data-suffix=".5+">0</span></div>
+            <div class="text-xs text-slate-400 mt-1" data-i18n="hero.stat2">Years professional</div>
+          </div>
+          <div data-tip="Asia & Europe" class="ripple-wrap rounded-xl p-2 hover:bg-white/5 transition cursor-pointer" onclick="document.getElementById('experience').scrollIntoView({behavior:'smooth'})">
+            <div class="text-3xl font-display font-bold text-gradient"><span class="count-val" data-target="2" data-suffix="">0</span></div>
+            <div class="text-xs text-slate-400 mt-1" data-i18n="hero.stat3">Continents worked in</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Profile card -->
+      <div class="reveal flex justify-center md:justify-end">
+        <div class="relative animate-float">
+          <div class="absolute -inset-6 rounded-[2.5rem] bg-gradient-to-tr from-brand-500/40 via-fuchsia-500/40 to-pink-500/40 blur-2xl"></div>
+          <div class="relative glass rounded-[2rem] p-6 w-[20rem] sm:w-[22rem]">
+            <div class="relative w-full aspect-square rounded-[1.5rem] overflow-hidden">
+              <img src="pfp.jpg" alt="Galante Marreti" id="pfp-img" class="w-full h-full object-cover cursor-pointer" data-tip="Click me!" title="Click me!"/>
+              <div class="absolute inset-0 ring-1 ring-white/10 rounded-[1.5rem]"></div>
+              <div class="absolute bottom-3 left-3 glass rounded-full px-3 py-1 text-xs flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                <span data-i18n="hero.online">Online · Coding</span>
+              </div>
+            </div>
+            <div class="mt-5 flex items-center justify-between">
+              <div>
+                <div class="font-display font-bold text-lg">Galante Marreti</div>
+                <div class="text-xs text-slate-400" data-i18n="hero.role">Senior Fullstack Engineer</div>
+              </div>
+              <div class="flex gap-2">
+                <a href="https://github.com/dapen17" target="_blank" rel="noopener noreferrer" class="w-9 h-9 grid place-items-center rounded-full glass hover:bg-white/10 transition" aria-label="GitHub"><i class="devicon-github-original"></i></a>
+                <a href="#" class="w-9 h-9 grid place-items-center rounded-full glass hover:bg-white/10 transition" aria-label="LinkedIn"><i class="devicon-linkedin-plain text-blue-400"></i></a>
+              </div>
+            </div>
+            <div class="mt-4 grid grid-cols-3 gap-2 text-center text-[11px]">
+              <div class="glass rounded-lg py-2"><div class="text-slate-400" data-i18n="hero.tag1">Born</div><div class="font-semibold mt-0.5">17 Feb 2003</div></div>
+              <div class="glass rounded-lg py-2"><div class="text-slate-400" data-i18n="hero.tag2">Based</div><div class="font-semibold mt-0.5">Indonesia</div></div>
+              <div class="glass rounded-lg py-2"><div class="text-slate-400" data-i18n="hero.tag3">Lang</div><div class="font-semibold mt-0.5">ID · EN</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scroll indicator -->
+    <a href="#about" class="absolute bottom-8 left-1/2 -translate-x-1/2 text-xs text-slate-400 flex flex-col items-center gap-2 hover:text-white transition">
+      <span data-i18n="hero.scroll">scroll</span>
+      <span class="w-px h-10 bg-gradient-to-b from-brand-400 to-transparent"></span>
+    </a>
+  </section>
+
+  <!-- TECH MARQUEE -->
+  <section class="py-10 border-y border-white/5 overflow-hidden">
+    <div class="flex marquee-track gap-12 whitespace-nowrap text-3xl text-slate-400 no-scrollbar">
+      <!-- duplicated twice for seamless -->
+      <div class="flex gap-12 items-center px-6">
+        <i class="devicon-typescript-plain text-blue-400"></i>
+        <i class="devicon-react-original text-cyan-400"></i>
+        <i class="devicon-nextjs-original-wordmark"></i>
+        <i class="devicon-nodejs-plain-wordmark text-emerald-400"></i>
+        <i class="devicon-go-original-wordmark text-cyan-300"></i>
+        <i class="devicon-rust-original"></i>
+        <i class="devicon-python-plain-wordmark text-yellow-300"></i>
+        <i class="devicon-postgresql-plain-wordmark text-blue-300"></i>
+        <i class="devicon-graphql-plain text-pink-400"></i>
+        <i class="devicon-docker-plain-wordmark text-blue-400"></i>
+        <i class="devicon-kubernetes-plain-wordmark text-blue-400"></i>
+        <i class="devicon-amazonwebservices-plain-wordmark text-orange-400"></i>
+        <i class="devicon-tailwindcss-plain text-cyan-400"></i>
+        <i class="devicon-redis-plain-wordmark text-red-400"></i>
+        <i class="devicon-mongodb-plain-wordmark text-emerald-500"></i>
+      </div>
+      <div class="flex gap-12 items-center px-6" aria-hidden="true">
+        <i class="devicon-typescript-plain text-blue-400"></i>
+        <i class="devicon-react-original text-cyan-400"></i>
+        <i class="devicon-nextjs-original-wordmark"></i>
+        <i class="devicon-nodejs-plain-wordmark text-emerald-400"></i>
+        <i class="devicon-go-original-wordmark text-cyan-300"></i>
+        <i class="devicon-rust-original"></i>
+        <i class="devicon-python-plain-wordmark text-yellow-300"></i>
+        <i class="devicon-postgresql-plain-wordmark text-blue-300"></i>
+        <i class="devicon-graphql-plain text-pink-400"></i>
+        <i class="devicon-docker-plain-wordmark text-blue-400"></i>
+        <i class="devicon-kubernetes-plain-wordmark text-blue-400"></i>
+        <i class="devicon-amazonwebservices-plain-wordmark text-orange-400"></i>
+        <i class="devicon-tailwindcss-plain text-cyan-400"></i>
+        <i class="devicon-redis-plain-wordmark text-red-400"></i>
+        <i class="devicon-mongodb-plain-wordmark text-emerald-500"></i>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="py-28 relative">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="reveal mb-12">
+        <div class="text-xs font-mono text-brand-400 mb-2">// 01 — about</div>
+        <h2 class="font-display text-4xl sm:text-5xl font-bold" data-i18n="about.title">
+          Crafting digital products with <span class="text-gradient">obsession</span> &amp; precision.
+        </h2>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="reveal md:col-span-2 glass rounded-3xl p-8">
+          <p class="text-slate-300 leading-relaxed text-lg" data-i18n="about.p1">
+            I'm <b>Moh Rafi Akbar</b>, born February 17, 2003. A relentlessly curious fullstack engineer who lives at the intersection of design, code, and product thinking. I believe great software is invisible — it just feels right.
+          </p>
+          <p class="mt-4 text-slate-400 leading-relaxed" data-i18n="about.p2">
+            I enthusiastically use English as my working language and switch fluidly between Bahasa Indonesia and English. Over the past year and a half I've shipped production systems across two continents, learning that great engineering is 20% syntax and 80% empathy — for users, teammates, and the next dev who reads your code.
+          </p>
+
+          <div class="mt-8 grid sm:grid-cols-2 gap-4">
+            <div class="flex items-start gap-3"><div class="w-9 h-9 grid place-items-center rounded-lg bg-brand-500/15 text-brand-400">⚡</div><div><div class="font-semibold" data-i18n="about.f1t">Performance-first</div><div class="text-sm text-slate-400" data-i18n="about.f1d">Sub-100ms p99, lighthouse 100s.</div></div></div>
+            <div class="flex items-start gap-3"><div class="w-9 h-9 grid place-items-center rounded-lg bg-fuchsia-500/15 text-fuchsia-400">◇</div><div><div class="font-semibold" data-i18n="about.f2t">Design-driven</div><div class="text-sm text-slate-400" data-i18n="about.f2d">Pixel-perfect, accessible, motion-rich UI.</div></div></div>
+            <div class="flex items-start gap-3"><div class="w-9 h-9 grid place-items-center rounded-lg bg-pink-500/15 text-pink-400">∞</div><div><div class="font-semibold" data-i18n="about.f3t">Cloud-native</div><div class="text-sm text-slate-400" data-i18n="about.f3d">Docker, K8s, AWS, edge & serverless.</div></div></div>
+            <div class="flex items-start gap-3"><div class="w-9 h-9 grid place-items-center rounded-lg bg-emerald-500/15 text-emerald-400">✓</div><div><div class="font-semibold" data-i18n="about.f4t">Bilingual</div><div class="text-sm text-slate-400" data-i18n="about.f4d">Bahasa Indonesia & English (professional).</div></div></div>
+          </div>
+        </div>
+
+        <div class="reveal glass rounded-3xl p-8">
+          <div class="text-xs font-mono text-slate-400 mb-3">$ whoami</div>
+          <pre class="text-sm font-mono leading-7 text-slate-300 whitespace-pre-wrap">
+<span class="text-pink-400">const</span> <span class="text-brand-300">rafi</span> = {
+  <span class="text-emerald-300">name</span>:    <span class="text-amber-300">"Galante Marreti"</span>,
+  <span class="text-emerald-300">born</span>:    <span class="text-amber-300">"2003-02-17"</span>,
+  <span class="text-emerald-300">role</span>:    <span class="text-amber-300">"Senior Fullstack"</span>,
+  <span class="text-emerald-300">stack</span>:   [<span class="text-amber-300">"TS"</span>, <span class="text-amber-300">"Next"</span>, <span class="text-amber-300">"Go"</span>, <span class="text-amber-300">"Rust"</span>],
+  <span class="text-emerald-300">cities</span>:  [<span class="text-amber-300">"Yogyakarta"</span>, <span class="text-amber-300">"Amsterdam"</span>],
+  <span class="text-emerald-300">langs</span>:   [<span class="text-amber-300">"id"</span>, <span class="text-amber-300">"en"</span>],
+  <span class="text-emerald-300">coffee</span>:  <span class="text-fuchsia-400">true</span>
+};</pre>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STACK -->
+  <section id="stack" class="py-28 relative">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="reveal mb-12">
+        <div class="text-xs font-mono text-brand-400 mb-2">// 02 — stack</div>
+        <h2 class="font-display text-4xl sm:text-5xl font-bold" data-i18n="stack.title">
+          The <span class="text-gradient">trending fullstack</span> arsenal.
+        </h2>
+        <p class="mt-3 text-slate-400 max-w-2xl" data-i18n="stack.sub">A curated set of modern, production-grade tools I use to build at scale.</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5" id="skillsGrid">
+        <!-- generated -->
+      </div>
+
+      <!-- All techs grid -->
+      <div class="reveal mt-14 glass rounded-3xl p-8">
+        <div class="text-sm uppercase tracking-widest text-slate-400 mb-6" data-i18n="stack.tools">Tools &amp; ecosystem</div>
+        <div class="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-10 gap-4">
+          <!-- icons -->
+          <div class="aspect-square grid place-items-center rounded-xl glass text-3xl hover:scale-110 hover:-translate-y-1 transition" title="TypeScript"><i class="devicon-typescript-plain text-blue-400"></i></div>
+          <div class="aspect-square grid place-items-center rounded-xl glass text-3xl hover:scale-110 hover:-translate-y-1 transition" title="JavaScript"><i class="devicon-javascript-plain text-yellow-300"></i></div>
+          <div class="aspect-square grid place-items-center rounded-xl glass text-3xl hover:scale-110 hover:-translate-y-1 transition" title="React"><i class="devicon-react-original text-cyan-400"></i></div>
+          <div class="aspect-square grid place-items-center rounded-xl glass text-3xl hover:scale-110 hover:-translate-y-1 transition" title="Next.js"><i class="devicon-nextjs-original"></i></div>
+          <div class="aspect-square grid place-items-center rounded-xl glass text-3xl hover:scale-110 hover:-translate-y-1 transition" title="Vue"><i class="devicon-vuejs-plain text-emerald-400"></i></div>
+          <div class="aspect-square grid place-items-center rounded-xl glass text-3xl hover:scale-110 hover:-translate-y-1 transition" title="Svelte"><i class="devicon-svelte-plain text-orange-500"></i></div>
+          <div class="aspect-square grid place-items-center rounded-xl glass text-3xl hover:scale-110 hover:-translate-y-1 transition" title="Node.js"><i class="devicon-nodejs-plain text-emerald-400"></i></div>
+          <div class="aspect-square grid place-items-center rounded-xl glass text-3xl hover:scale-110 hover:-translate-y-1 transition" title="Go"><i class="devicon-go-original-wordmark text-cyan-300"></i></div>
+          <div class="aspect-square grid place-items-center rounded-xl glass text-3xl hover:scale-110 hover:-translate-y-1 transition" title="Rust"><i class="devicon-rust-original"></i></div>
+          <div class="aspect-square grid place-items-center rounded-xl glass text-3xl hover:scale-110 hover:-translate-y-1 transition" title="Python"><i class="devicon-python-plain text-yellow-300"></i></div>
+          <div class="aspect-square grid place-items-center rounded-xl glass text-3xl hover:scale-110 hover:-translate-y-1 transition" title="PostgreSQL"><i class="devicon-postgresql-plain text-blue-300"></i></div>
+          <div class="aspect-square grid place-items-center rounded-xl glass text-3xl hover:scale-110 hover:-translate-y-1 transition" title="MongoDB"><i class="devicon-mongodb-plain text-emerald-500"></i></div>
+          <div class="aspect-square grid place-items-center rounded-xl glass text-3xl hover:scale-110 hover:-translate-y-1 transition" title="Redis"><i class="devicon-redis-plain text-red-400"></i></div>
+          <div class="aspect-square grid place-items-center rounded-xl glass text-3xl hover:scale-110 hover:-translate-y-1 transition" title="GraphQL"><i class="devicon-graphql-plain text-pink-400"></i></div>
+          <div class="aspect-square grid place-items-center rounded-xl glass text-3xl hover:scale-110 hover:-translate-y-1 transition" title="Docker"><i class="devicon-docker-plain text-blue-400"></i></div>
+          <div class="aspect-square grid place-items-center rounded-xl glass text-3xl hover:scale-110 hover:-translate-y-1 transition" title="Kubernetes"><i class="devicon-kubernetes-plain text-blue-400"></i></div>
+          <div class="aspect-square grid place-items-center rounded-xl glass text-3xl hover:scale-110 hover:-translate-y-1 transition" title="AWS"><i class="devicon-amazonwebservices-plain-wordmark text-orange-400"></i></div>
+          <div class="aspect-square grid place-items-center rounded-xl glass text-3xl hover:scale-110 hover:-translate-y-1 transition" title="Tailwind"><i class="devicon-tailwindcss-plain text-cyan-400"></i></div>
+          <div class="aspect-square grid place-items-center rounded-xl glass text-3xl hover:scale-110 hover:-translate-y-1 transition" title="Git"><i class="devicon-git-plain text-orange-500"></i></div>
+          <div class="aspect-square grid place-items-center rounded-xl glass text-3xl hover:scale-110 hover:-translate-y-1 transition" title="Linux"><i class="devicon-linux-plain text-yellow-300"></i></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience" class="py-28 relative">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="reveal mb-14">
+        <div class="text-xs font-mono text-brand-400 mb-2">// 03 — experience</div>
+        <h2 class="font-display text-4xl sm:text-5xl font-bold" data-i18n="exp.title">
+          A journey across <span class="text-gradient">two cities</span>, two cultures.
+        </h2>
+      </div>
+
+      <div class="relative pl-8 md:pl-0">
+        <!-- vertical line -->
+        <div class="absolute left-3 md:left-1/2 top-0 bottom-0 w-[2px] tl-line opacity-60 md:-translate-x-1/2"></div>
+
+        <!-- item 1 -->
+        <div class="reveal relative md:grid md:grid-cols-2 md:gap-10 mb-14">
+          <span class="absolute left-3 md:left-1/2 -translate-x-1/2 top-2 w-4 h-4 rounded-full bg-brand-400 tl-dot"></span>
+          <div class="md:text-right md:pr-12">
+            <div class="text-xs font-mono text-slate-400">Feb 2026 — <span data-i18n="exp.now">Present</span> · Amsterdam, NL 🇳🇱</div>
+            <h3 class="font-display text-2xl font-bold mt-1">Software Engineering Intern</h3>
+            <div class="text-brand-400 font-semibold">Booking.com</div>
+          </div>
+          <div class="glass rounded-2xl p-6 md:ml-12 mt-3 md:mt-0">
+            <p class="text-slate-300" data-i18n="exp.amsP">
+              6-month international internship on the Search Experience platform. Shipping experiments seen by millions across 200+ countries.
+            </p>
+            <ul class="mt-4 space-y-2 text-sm text-slate-400">
+              <li data-i18n="exp.amsL1">▸ Built A/B-tested React components serving 40M+ monthly visitors.</li>
+              <li data-i18n="exp.amsL2">▸ Optimised GraphQL gateway reducing p95 latency by 38%.</li>
+              <li data-i18n="exp.amsL3">▸ Worked across 8 nationalities — daily English, agile rituals.</li>
+            </ul>
+            <div class="mt-4 flex flex-wrap gap-2 text-[11px]">
+              <span class="px-2 py-1 rounded-full glass">TypeScript</span>
+              <span class="px-2 py-1 rounded-full glass">React</span>
+              <span class="px-2 py-1 rounded-full glass">GraphQL</span>
+              <span class="px-2 py-1 rounded-full glass">Kubernetes</span>
+              <span class="px-2 py-1 rounded-full glass">Perl</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- item 2 -->
+        <div class="reveal relative md:grid md:grid-cols-2 md:gap-10 mb-14">
+          <span class="absolute left-3 md:left-1/2 -translate-x-1/2 top-2 w-4 h-4 rounded-full bg-fuchsia-400 tl-dot"></span>
+          <div class="md:order-2 md:pl-12">
+            <div class="text-xs font-mono text-slate-400">Jan 2025 — Jan 2026 · Yogyakarta, ID 🇮🇩</div>
+            <h3 class="font-display text-2xl font-bold mt-1">Fullstack Engineer</h3>
+            <div class="text-fuchsia-400 font-semibold">PT Gamatechno Indonesia</div>
+          </div>
+          <div class="glass rounded-2xl p-6 md:order-1 md:mr-12 md:text-right mt-3 md:mt-0">
+            <p class="text-slate-300" data-i18n="exp.jogP">
+              1 full year as a fullstack engineer, owning features end-to-end on enterprise SaaS for smart-city &amp; campus solutions.
+            </p>
+            <ul class="mt-4 space-y-2 text-sm text-slate-400 md:text-right">
+              <li data-i18n="exp.jogL1">▸ Led migration of legacy monolith to Next.js + Go microservices.</li>
+              <li data-i18n="exp.jogL2">▸ Designed PostgreSQL schemas serving 300k+ daily active users.</li>
+              <li data-i18n="exp.jogL3">▸ Mentored 3 junior devs; introduced code-review &amp; CI standards.</li>
+            </ul>
+            <div class="mt-4 flex flex-wrap gap-2 text-[11px] md:justify-end">
+              <span class="px-2 py-1 rounded-full glass">Next.js</span>
+              <span class="px-2 py-1 rounded-full glass">Go</span>
+              <span class="px-2 py-1 rounded-full glass">PostgreSQL</span>
+              <span class="px-2 py-1 rounded-full glass">Redis</span>
+              <span class="px-2 py-1 rounded-full glass">Docker</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- item 3 -->
+        <div class="reveal relative md:grid md:grid-cols-2 md:gap-10">
+          <span class="absolute left-3 md:left-1/2 -translate-x-1/2 top-2 w-4 h-4 rounded-full bg-pink-400 tl-dot"></span>
+          <div class="md:text-right md:pr-12">
+            <div class="text-xs font-mono text-slate-400">2021 — 2024</div>
+            <h3 class="font-display text-2xl font-bold mt-1" data-i18n="exp.eduTitle">B.Sc. Informatics</h3>
+            <div class="text-pink-400 font-semibold" data-i18n="exp.eduOrg">Self-taught + University · Indonesia</div>
+          </div>
+          <div class="glass rounded-2xl p-6 md:ml-12 mt-3 md:mt-0">
+            <p class="text-slate-300" data-i18n="exp.eduP">
+              Built &gt; 20 personal projects, contributed to OSS, won regional hackathons. Studied algorithms, distributed systems, and design.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects" class="py-28 relative">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="reveal mb-12 flex items-end justify-between flex-wrap gap-4">
+        <div>
+          <div class="text-xs font-mono text-brand-400 mb-2">// 04 — projects</div>
+          <h2 class="font-display text-4xl sm:text-5xl font-bold" data-i18n="proj.title">
+            Selected <span class="text-gradient">work</span>.
+          </h2>
+        </div>
+        <p class="text-slate-400 max-w-md" data-i18n="proj.sub">
+          A handful of products I'm proud of — from edge-rendered SaaS to realtime trading dashboards.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="projectsGrid"></div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="py-28 relative">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="reveal glass rounded-[2rem] p-10 sm:p-14 text-center relative overflow-hidden">
+        <div class="absolute -top-32 -left-32 w-[28rem] h-[28rem] rounded-full bg-brand-600/30 blur-3xl"></div>
+        <div class="absolute -bottom-32 -right-32 w-[28rem] h-[28rem] rounded-full bg-fuchsia-600/30 blur-3xl"></div>
+        <div class="relative">
+          <div class="text-xs font-mono text-brand-400 mb-2">// 05 — contact</div>
+          <h2 class="font-display text-4xl sm:text-6xl font-bold leading-tight" data-i18n="contact.title">
+            Let's build something <span class="text-gradient">extraordinary</span>.
+          </h2>
+          <p class="mt-5 max-w-2xl mx-auto text-slate-300" data-i18n="contact.sub">
+            Open to senior fullstack roles, technical leadership, and ambitious freelance collaborations. Reach me in Bahasa Indonesia or English — I reply within 24 hours.
+          </p>
+
+          <div class="mt-10 flex flex-wrap gap-3 justify-center">
+            <a href="mailto:galantemarreti@gmail.com" class="btn-grad px-6 py-3 rounded-full bg-[#070712] font-semibold inline-flex items-center gap-2">
+              ✉ galantemarreti@gmail.com
+            </a>
+            <a href="https://github.com/dapen17" target="_blank" rel="noopener noreferrer" class="px-6 py-3 rounded-full glass font-semibold hover:bg-white/10 inline-flex items-center gap-2"><i class="devicon-github-original"></i> GitHub</a>
+            <a href="#" class="px-6 py-3 rounded-full glass font-semibold hover:bg-white/10 inline-flex items-center gap-2"><i class="devicon-linkedin-plain text-blue-400"></i> LinkedIn</a>
+          </div>
+        </div>
+      </div>
+
+      <footer class="mt-12 text-center text-sm text-slate-500">
+        <div>© <span id="year"></span> Galante Marreti — <span data-i18n="footer.built">Built with obsession in TypeScript &amp; coffee.</span></div>
+      </footer>
+    </div>
+  </section>
+
+  <!-- ============== JS ============== -->
+  <script>
+  // ===== i18n =====
+  const i18n = {
+    en: {
+      'nav.home':'Home','nav.about':'About','nav.stack':'Stack','nav.exp':'Experience','nav.projects':'Projects','nav.contact':'Contact',
+      'hero.available':'Available for senior fullstack roles',
+      'hero.hi':"Hi, I'm",
+      'hero.desc':'Senior-level fullstack engineer crafting performant, scalable, cloud-native products. Obsessed with clean architecture, beautiful UI, and shipping things that just work.',
+      'hero.cta1':'View My Work','hero.cta2':"Let's Talk",
+      'hero.stat1':'Projects shipped','hero.stat2':'Years professional','hero.stat3':'Continents worked in',
+      'hero.online':'Online · Coding','hero.role':'Senior Fullstack Engineer',
+      'hero.tag1':'Born','hero.tag2':'Based','hero.tag3':'Lang','hero.scroll':'scroll',
+      'about.title':'Crafting digital products with <span class="text-gradient">obsession</span> &amp; precision.',
+      'about.p1':"I'm <b>Galante Marreti</b>, born February 17, 2003. A relentlessly curious fullstack engineer who lives at the intersection of design, code, and product thinking. I believe great software is invisible — it just feels right.",
+      'about.p2':"I enthusiastically use English as my working language and switch fluidly between Bahasa Indonesia and English. Over the past year and a half I've shipped production systems across two continents, learning that great engineering is 20% syntax and 80% empathy — for users, teammates, and the next dev who reads your code.",
+      'about.f1t':'Performance-first','about.f1d':'Sub-100ms p99, lighthouse 100s.',
+      'about.f2t':'Design-driven','about.f2d':'Pixel-perfect, accessible, motion-rich UI.',
+      'about.f3t':'Cloud-native','about.f3d':'Docker, K8s, AWS, edge & serverless.',
+      'about.f4t':'Bilingual','about.f4d':'Bahasa Indonesia & English (professional).',
+      'stack.title':'The <span class="text-gradient">trending fullstack</span> arsenal.',
+      'stack.sub':'A curated set of modern, production-grade tools I use to build at scale.',
+      'stack.tools':'Tools & ecosystem',
+      'exp.title':'A journey across <span class="text-gradient">two cities</span>, two cultures.',
+      'exp.now':'Present',
+      'exp.amsP':'6-month international internship on the Search Experience platform. Shipping experiments seen by millions across 200+ countries.',
+      'exp.amsL1':'▸ Built A/B-tested React components serving 40M+ monthly visitors.',
+      'exp.amsL2':'▸ Optimised GraphQL gateway reducing p95 latency by 38%.',
+      'exp.amsL3':'▸ Worked across 8 nationalities — daily English, agile rituals.',
+      'exp.jogP':'1 full year as a fullstack engineer, owning features end-to-end on enterprise SaaS for smart-city & campus solutions.',
+      'exp.jogL1':'▸ Led migration of legacy monolith to Next.js + Go microservices.',
+      'exp.jogL2':'▸ Designed PostgreSQL schemas serving 300k+ daily active users.',
+      'exp.jogL3':'▸ Mentored 3 junior devs; introduced code-review & CI standards.',
+      'exp.eduTitle':'B.Sc. Informatics','exp.eduOrg':'Self-taught + University · Indonesia',
+      'exp.eduP':'Built > 20 personal projects, contributed to OSS, won regional hackathons. Studied algorithms, distributed systems, and design.',
+      'proj.title':'Selected <span class="text-gradient">work</span>.',
+      'proj.sub':"A handful of products I'm proud of — from edge-rendered SaaS to realtime trading dashboards.",
+      'contact.title':"Let's build something <span class=\"text-gradient\">extraordinary</span>.",
+      'contact.sub':'Open to senior fullstack roles, technical leadership, and ambitious freelance collaborations. Reach me in Bahasa Indonesia or English — I reply within 24 hours.',
+      'footer.built':'Built with obsession in TypeScript & coffee.',
+      'tw': ['Senior Fullstack Engineer','TypeScript · Go · Rust · Next.js','Cloud-native architect','Yogyakarta → Amsterdam','I ship pixel-perfect products.']
+    },
+    id: {
+      'nav.home':'Beranda','nav.about':'Tentang','nav.stack':'Teknologi','nav.exp':'Pengalaman','nav.projects':'Proyek','nav.contact':'Kontak',
+      'hero.available':'Terbuka untuk posisi senior fullstack',
+      'hero.hi':'Halo, saya',
+      'hero.desc':'Senior fullstack engineer yang membangun produk cepat, scalable, dan cloud-native. Terobsesi dengan arsitektur bersih, UI yang cantik, dan produk yang benar-benar bekerja.',
+      'hero.cta1':'Lihat Karya','hero.cta2':'Hubungi Saya',
+      'hero.stat1':'Proyek dirilis','hero.stat2':'Tahun pengalaman','hero.stat3':'Benua tempat bekerja',
+      'hero.online':'Online · Coding','hero.role':'Senior Fullstack Engineer',
+      'hero.tag1':'Lahir','hero.tag2':'Domisili','hero.tag3':'Bahasa','hero.scroll':'gulir',
+      'about.title':'Membangun produk digital dengan <span class="text-gradient">obsesi</span> &amp; presisi.',
+      'about.p1':'Saya <b>Galante Marreti</b>, lahir 17 Februari 2003. Fullstack engineer yang sangat penasaran, hidup di persimpangan desain, kode, dan product thinking. Software yang hebat itu tak terlihat — ia hanya terasa benar.',
+      'about.p2':'Saya antusias menggunakan bahasa Inggris sebagai bahasa kerja, dan luwes berpindah antara Bahasa Indonesia dan Inggris. Selama 1,5 tahun terakhir saya merilis sistem produksi di dua benua — belajar bahwa engineering hebat itu 20% sintaks, 80% empati.',
+      'about.f1t':'Performa utama','about.f1d':'p99 sub-100ms, Lighthouse 100.',
+      'about.f2t':'Berorientasi desain','about.f2d':'Pixel-perfect, aksesibel, kaya motion.',
+      'about.f3t':'Cloud-native','about.f3d':'Docker, K8s, AWS, edge & serverless.',
+      'about.f4t':'Bilingual','about.f4d':'Bahasa Indonesia & Inggris (profesional).',
+      'stack.title':'Senjata <span class="text-gradient">fullstack tren masa kini</span>.',
+      'stack.sub':'Kumpulan tools modern level produksi yang saya pakai untuk skala besar.',
+      'stack.tools':'Tools & ekosistem',
+      'exp.title':'Perjalanan lintas <span class="text-gradient">dua kota</span>, dua budaya.',
+      'exp.now':'Sekarang',
+      'exp.amsP':'Magang internasional 6 bulan di platform Search Experience. Merilis eksperimen yang dilihat jutaan orang di 200+ negara.',
+      'exp.amsL1':'▸ Membangun komponen React A/B-test untuk 40M+ pengunjung bulanan.',
+      'exp.amsL2':'▸ Mengoptimalkan gateway GraphQL — p95 latency turun 38%.',
+      'exp.amsL3':'▸ Bekerja dengan 8 nasionalitas — Inggris harian, ritual agile.',
+      'exp.jogP':'1 tahun penuh sebagai fullstack engineer — memiliki fitur end-to-end di SaaS enterprise untuk smart-city & solusi kampus.',
+      'exp.jogL1':'▸ Memimpin migrasi monolit lama ke Next.js + microservices Go.',
+      'exp.jogL2':'▸ Merancang skema PostgreSQL untuk 300k+ pengguna aktif harian.',
+      'exp.jogL3':'▸ Mentor 3 junior; mengenalkan standar code-review & CI.',
+      'exp.eduTitle':'S1 Informatika','exp.eduOrg':'Otodidak + Universitas · Indonesia',
+      'exp.eduP':'Membangun >20 proyek pribadi, kontribusi OSS, juara hackathon regional. Mempelajari algoritma, distributed systems, dan desain.',
+      'proj.title':'Karya <span class="text-gradient">terpilih</span>.',
+      'proj.sub':'Beberapa produk yang saya banggakan — dari SaaS edge-rendered sampai dashboard trading realtime.',
+      'contact.title':'Mari bangun sesuatu yang <span class="text-gradient">luar biasa</span>.',
+      'contact.sub':'Terbuka untuk peran senior fullstack, kepemimpinan teknis, dan kolaborasi freelance ambisius. Hubungi saya dalam Bahasa Indonesia atau Inggris — saya balas dalam 24 jam.',
+      'footer.built':'Dibangun dengan obsesi pakai TypeScript & kopi.',
+      'tw': ['Senior Fullstack Engineer','TypeScript · Go · Rust · Next.js','Arsitek cloud-native','Jogja → Amsterdam','Saya merilis produk pixel-perfect.']
+    }
+  };
+
+  let lang = 'en';
+  function applyLang() {
+    document.documentElement.lang = lang;
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const k = el.getAttribute('data-i18n');
+      if (i18n[lang][k] !== undefined) el.innerHTML = i18n[lang][k];
+    });
+    document.getElementById('langBtn').textContent = lang === 'en' ? 'EN' : 'ID';
+    restartTypewriter();
+  }
+  document.getElementById('langBtn').addEventListener('click', () => {
+    lang = lang === 'en' ? 'id' : 'en';
+    applyLang();
+  });
+
+  // ===== Theme =====
+  const themeBtn = document.getElementById('themeBtn');
+  themeBtn.addEventListener('click', () => {
+    document.documentElement.classList.toggle('dark');
+    document.body.classList.toggle('bg-[#070712]');
+    document.body.classList.toggle('bg-slate-50');
+    document.body.classList.toggle('text-slate-100');
+    document.body.classList.toggle('text-slate-900');
+  });
+
+  // ===== Year =====
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // ===== Typewriter =====
+  let twTimer;
+  function restartTypewriter() {
+    clearTimeout(twTimer);
+    const el = document.getElementById('typewriter');
+    const phrases = i18n[lang].tw;
+    let pi = 0, ci = 0, deleting = false;
+    function tick() {
+      const cur = phrases[pi];
+      if (!deleting) {
+        ci++;
+        el.textContent = cur.slice(0, ci);
+        if (ci === cur.length) { deleting = true; twTimer = setTimeout(tick, 1600); return; }
+        twTimer = setTimeout(tick, 55);
+      } else {
+        ci--;
+        el.textContent = cur.slice(0, ci);
+        if (ci === 0) { deleting = false; pi = (pi + 1) % phrases.length; twTimer = setTimeout(tick, 250); return; }
+        twTimer = setTimeout(tick, 25);
+      }
+    }
+    tick();
+  }
+
+  // ===== Scroll reveal =====
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        // skill bars
+        e.target.querySelectorAll('.bar > i').forEach(b => {
+          b.style.width = b.dataset.value + '%';
+        });
+      }
+    });
+  }, { threshold: .12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // ===== Skills =====
+  const skills = [
+    { name:'Frontend', items:[
+      {n:'TypeScript',v:96,i:'devicon-typescript-plain text-blue-400'},
+      {n:'Next.js / React',v:95,i:'devicon-react-original text-cyan-400'},
+      {n:'TailwindCSS',v:94,i:'devicon-tailwindcss-plain text-cyan-400'}
+    ]},
+    { name:'Backend', items:[
+      {n:'Node.js / Bun',v:93,i:'devicon-nodejs-plain text-emerald-400'},
+      {n:'Go',v:88,i:'devicon-go-original-wordmark text-cyan-300'},
+      {n:'Rust',v:78,i:'devicon-rust-original'}
+    ]},
+    { name:'Data & Infra', items:[
+      {n:'PostgreSQL',v:92,i:'devicon-postgresql-plain text-blue-300'},
+      {n:'Docker / K8s',v:88,i:'devicon-docker-plain text-blue-400'},
+      {n:'AWS',v:85,i:'devicon-amazonwebservices-plain-wordmark text-orange-400'}
+    ]}
+  ];
+  const sg = document.getElementById('skillsGrid');
+  skills.forEach(group => {
+    const card = document.createElement('div');
+    card.className = 'reveal glass rounded-2xl p-6';
+    card.innerHTML = `
+      <div class="flex items-center justify-between mb-5">
+        <div class="font-display font-bold text-xl">${group.name}</div>
+        <div class="w-8 h-8 rounded-lg bg-white/5 grid place-items-center text-brand-400">▣</div>
+      </div>
+      <div class="space-y-5">
+        ${group.items.map(it => `
+          <div>
+            <div class="flex items-center justify-between mb-2 text-sm">
+              <div class="flex items-center gap-2"><i class="${it.i} text-lg"></i><span>${it.n}</span></div>
+              <span class="font-mono text-xs text-slate-400">${it.v}%</span>
+            </div>
+            <div class="bar"><i data-value="${it.v}"></i></div>
+          </div>`).join('')}
+      </div>`;
+    sg.appendChild(card);
+    io.observe(card);
+  });
+
+  // ===== Projects =====
+  const projects = [
+    { title:'NebulaCommerce',     tag:'SaaS · Edge',    desc:{en:'Headless e-commerce platform with edge-rendered storefronts. 12k req/s sustained.',id:'Platform e-commerce headless dengan storefront edge-rendered. 12k req/s stabil.'}, stack:['Next.js','Go','Postgres','Redis'], color:'from-blue-500 to-fuchsia-500' },
+    { title:'PulseTrade',         tag:'Realtime',       desc:{en:'Realtime crypto trading dashboard with sub-50ms WebSocket pipeline.',id:'Dashboard trading kripto realtime dengan pipeline WebSocket sub-50ms.'}, stack:['Rust','React','TimescaleDB'], color:'from-emerald-500 to-cyan-500' },
+    { title:'Lumen AI',           tag:'AI · LLM',       desc:{en:'Multi-agent AI workflow builder with custom tool-calling runtime.',id:'Builder workflow AI multi-agent dengan runtime tool-calling kustom.'}, stack:['TypeScript','Python','LangGraph'], color:'from-fuchsia-500 to-pink-500' },
+    { title:'Skylight DevOps',    tag:'Infra',          desc:{en:'GitOps platform: preview envs in 8s on a managed K8s fleet.',id:'Platform GitOps: preview env dalam 8 detik di K8s fleet ter-manage.'}, stack:['Go','Kubernetes','gRPC'], color:'from-orange-500 to-red-500' },
+    { title:'Kawan Belajar',      tag:'EdTech · ID',    desc:{en:'Indonesian micro-learning app — 50k+ MAU, offline-first PWA.',id:'Aplikasi micro-learning lokal — 50k+ MAU, PWA offline-first.'}, stack:['Next.js','Supabase','PWA'], color:'from-amber-400 to-pink-500' },
+    { title:'Vortex 3D',          tag:'WebGL · Fun',    desc:{en:'Interactive 3D portfolio template with React Three Fiber & shaders.',id:'Template portofolio 3D interaktif pakai React Three Fiber & shader.'}, stack:['R3F','GLSL','Three.js'], color:'from-cyan-400 to-blue-600' },
+  ];
+  const pg = document.getElementById('projectsGrid');
+  projects.forEach((p,i) => {
+    const card = document.createElement('article');
+    card.className = 'reveal proj tilt glass rounded-2xl overflow-hidden group';
+    card.innerHTML = `
+      <div class="p-6 tilt-inner">
+        <div class="flex items-center justify-between mb-3">
+          <span class="glass rounded-full px-2.5 py-1 text-[10px] font-mono">${String(i+1).padStart(2,'0')} / ${String(projects.length).padStart(2,'0')}</span>
+          <span class="glass rounded-full px-2.5 py-1 text-[10px]">${p.tag}</span>
+        </div>
+        <h3 class="font-display text-xl font-bold">${p.title}</h3>
+        <p class="text-sm text-slate-400 mt-2 proj-desc" data-en="${p.desc.en}" data-id="${p.desc.id}">${p.desc[lang]}</p>
+        <div class="mt-4 flex flex-wrap gap-1.5 text-[11px]">
+          ${p.stack.map(s=>`<span class="px-2 py-0.5 rounded-full glass">${s}</span>`).join('')}
+        </div>
+        <a href="#" class="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-400 hover:text-brand-300 transition">
+          <span>${lang==='en'?'View case study':'Lihat studi kasus'}</span> →
+        </a>
+      </div>`;
+    pg.appendChild(card);
+    io.observe(card);
+
+    // tilt
+    card.addEventListener('mousemove', e => {
+      const r = card.getBoundingClientRect();
+      const x = (e.clientX - r.left)/r.width - 0.5;
+      const y = (e.clientY - r.top)/r.height - 0.5;
+      card.style.transform = `perspective(900px) rotateY(${x*8}deg) rotateX(${-y*8}deg) translateY(-6px)`;
+    });
+    card.addEventListener('mouseleave', () => card.style.transform = '');
+  });
+
+  // re-translate project descriptions on lang switch
+  const oldApply = applyLang;
+  applyLang = function() {
+    oldApply();
+    document.querySelectorAll('.proj-desc').forEach(d => d.textContent = d.dataset[lang]);
+  };
+
+  // ===== Custom cursor =====
+  const dot = document.querySelector('.cursor-dot');
+  const ring = document.querySelector('.cursor-ring');
+  let mx=0,my=0,rx=0,ry=0;
+  window.addEventListener('mousemove', e => { mx=e.clientX; my=e.clientY; dot.style.left=mx+'px'; dot.style.top=my+'px'; });
+  function loop(){ rx += (mx-rx)*.18; ry += (my-ry)*.18; ring.style.left=rx+'px'; ring.style.top=ry+'px'; requestAnimationFrame(loop); }
+  loop();
+  document.querySelectorAll('a,button,.proj').forEach(el => {
+    el.addEventListener('mouseenter', () => { ring.style.width='52px'; ring.style.height='52px'; ring.style.borderColor='rgba(236,72,153,.7)'; });
+    el.addEventListener('mouseleave', () => { ring.style.width='36px'; ring.style.height='36px'; ring.style.borderColor='rgba(139,92,246,.6)'; });
+  });
+
+  // ===== Particles canvas =====
+  (function(){
+    const c = document.getElementById('particles');
+    const ctx = c.getContext('2d');
+    let w,h,ps=[];
+    function resize(){ w=c.width=innerWidth; h=c.height=innerHeight; }
+    resize(); addEventListener('resize', resize);
+    const N = Math.min(110, Math.floor(innerWidth/14));
+    for (let i=0;i<N;i++) ps.push({
+      x:Math.random()*w, y:Math.random()*h,
+      vx:(Math.random()-0.5)*0.4, vy:(Math.random()-0.5)*0.4,
+      r:Math.random()*1.6+0.4
+    });
+    let mx=-9999,my=-9999;
+    addEventListener('mousemove', e => { mx=e.clientX; my=e.clientY; });
+    function frame(){
+      ctx.clearRect(0,0,w,h);
+      for (let i=0;i<ps.length;i++){
+        const p = ps[i];
+        p.x += p.vx; p.y += p.vy;
+        if (p.x<0||p.x>w) p.vx*=-1;
+        if (p.y<0||p.y>h) p.vy*=-1;
+        const dx = p.x-mx, dy = p.y-my, d2 = dx*dx+dy*dy;
+        if (d2 < 14000) { p.x += dx/Math.sqrt(d2)*0.6; p.y += dy/Math.sqrt(d2)*0.6; }
+        ctx.beginPath();
+        ctx.fillStyle = 'rgba(140,180,255,0.55)';
+        ctx.arc(p.x,p.y,p.r,0,Math.PI*2); ctx.fill();
+        for (let j=i+1;j<ps.length;j++){
+          const q = ps[j], ddx=p.x-q.x, ddy=p.y-q.y, dd=ddx*ddx+ddy*ddy;
+          if (dd<11000){
+            ctx.strokeStyle = `rgba(139,92,246,${(1-dd/11000)*0.25})`;
+            ctx.lineWidth=1;
+            ctx.beginPath(); ctx.moveTo(p.x,p.y); ctx.lineTo(q.x,q.y); ctx.stroke();
+          }
+        }
+      }
+      requestAnimationFrame(frame);
+    }
+    frame();
+  })();
+
+  // ===== Scroll progress =====
+  window.addEventListener('scroll', () => {
+    const prog = document.getElementById('progress');
+    const p = (scrollY / (document.body.scrollHeight - innerHeight)) * 100;
+    prog.style.width = Math.min(p, 100) + '%';
+
+    // nav active
+    const secs = ['home','about','stack','experience','projects','contact'];
+    let cur = 'home';
+    secs.forEach(id => {
+      const el = document.getElementById(id);
+      if (el && scrollY >= el.offsetTop - 120) cur = id;
+    });
+    document.querySelectorAll('nav a[href^="#"]').forEach(a => {
+      a.classList.toggle('nav-active', a.getAttribute('href') === '#'+cur);
+    });
+  });
+
+  // ===== Animated counters =====
+  const counterObs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      const el = e.target;
+      const target = parseInt(el.dataset.target);
+      const suffix = el.dataset.suffix || '';
+      let start = 0;
+      const dur = 1400;
+      const step = ts => {
+        if (!start) start = ts;
+        const prog = Math.min((ts - start) / dur, 1);
+        const eased = 1 - Math.pow(1 - prog, 3);
+        el.textContent = Math.floor(eased * target) + suffix;
+        if (prog < 1) requestAnimationFrame(step);
+        else el.textContent = target + suffix;
+      };
+      requestAnimationFrame(step);
+      counterObs.unobserve(el);
+    });
+  }, { threshold: .5 });
+  document.querySelectorAll('.count-val').forEach(el => counterObs.observe(el));
+
+  // ===== Ripple on click =====
+  document.addEventListener('click', e => {
+    const target = e.target.closest('.ripple-wrap, button, a, .proj');
+    if (!target) return;
+    const r = document.createElement('span');
+    r.className = 'ripple';
+    const rect = target.getBoundingClientRect();
+    const size = Math.max(rect.width, rect.height) * 2;
+    r.style.cssText = `width:${size}px;height:${size}px;left:${e.clientX-rect.left-size/2}px;top:${e.clientY-rect.top-size/2}px`;
+    target.style.position = target.style.position || 'relative';
+    target.style.overflow = 'hidden';
+    target.appendChild(r);
+    r.addEventListener('animationend', () => r.remove());
+  });
+
+  // ===== Project Modal =====
+  const modalData = [
+    { title:'NebulaCommerce', tag:'SaaS · Edge', color:'from-blue-500 to-fuchsia-500',
+      en:'Full headless e-commerce platform with edge-rendered storefronts, multi-tenant architecture, and real-time inventory sync. Handles 12k sustained req/s with sub-30ms TTFB globally.',
+      id:'Platform e-commerce headless dengan storefront edge-rendered, arsitektur multi-tenant, dan sinkronisasi inventori realtime. Menangani 12k req/s dengan TTFB sub-30ms secara global.',
+      stack:['Next.js 14','Go','PostgreSQL','Redis','Vercel Edge','Stripe'],
+      stats:[{l:'req/s',v:'12k'},{l:'TTFB',v:'<30ms'},{l:'Uptime',v:'99.99%'}] },
+    { title:'PulseTrade', tag:'Realtime', color:'from-emerald-500 to-cyan-500',
+      en:'Crypto trading dashboard with sub-50ms WebSocket data pipeline. Built with Rust for the core engine, React for the UI. Supports 50+ trading pairs with live order-book depth charts.',
+      id:'Dashboard trading kripto dengan pipeline data WebSocket sub-50ms. Dibangun dengan Rust untuk core engine dan React untuk UI. Mendukung 50+ pasangan trading dengan grafik order-book live.',
+      stack:['Rust','React','WebSocket','TimescaleDB','Redis Streams','Recharts'],
+      stats:[{l:'Latency',v:'<50ms'},{l:'Pairs',v:'50+'},{l:'Users',v:'2k+'}] },
+    { title:'Lumen AI', tag:'AI · LLM', color:'from-fuchsia-500 to-pink-500',
+      en:'Visual multi-agent AI workflow builder. Drag & drop nodes that represent LLM calls, tools, and logic branches. Features a custom runtime with streaming, tool-use, and memory.',
+      id:'Builder workflow AI multi-agent visual. Drag & drop node yang merepresentasikan LLM call, tools, dan cabang logika. Dengan runtime kustom yang mendukung streaming, tool-use, dan memori.',
+      stack:['TypeScript','Python','LangGraph','FastAPI','React Flow','OpenAI'],
+      stats:[{l:'Node types',v:'24'},{l:'Avg exec',v:'1.2s'},{l:'Agents',v:'∞'}] },
+    { title:'Skylight DevOps', tag:'Infra', color:'from-orange-500 to-red-500',
+      en:'GitOps platform that spins up isolated preview environments in 8 seconds on a managed Kubernetes fleet. Push a branch, get a URL. Full env teardown on PR merge.',
+      id:'Platform GitOps yang menjalankan preview environment terisolasi dalam 8 detik di K8s fleet ter-manage. Push branch, dapat URL. Teardown otomatis saat PR di-merge.',
+      stack:['Go','Kubernetes','gRPC','ArgoCD','Terraform','GitHub Actions'],
+      stats:[{l:'Spin-up',v:'8s'},{l:'Envs/day',v:'120+'},{l:'Cost save',v:'60%'}] },
+    { title:'Kawan Belajar', tag:'EdTech · ID', color:'from-amber-400 to-pink-500',
+      en:'Indonesian micro-learning PWA with offline-first architecture. 50k+ MAU. Features spaced-repetition quizzes, video lessons, and a social learning feed — all installable, works offline.',
+      id:'PWA micro-learning Indonesia dengan arsitektur offline-first. 50k+ MAU. Fitur kuis spaced-repetition, video lesson, dan feed belajar sosial — bisa diinstall, bekerja offline.',
+      stack:['Next.js','Supabase','PWA','Workbox','Zustand','Framer Motion'],
+      stats:[{l:'MAU',v:'50k+'},{l:'Retention',v:'68%'},{l:'Offline',v:'100%'}] },
+    { title:'Vortex 3D', tag:'WebGL · Fun', color:'from-cyan-400 to-blue-600',
+      en:'Interactive 3D portfolio template powered by React Three Fiber and custom GLSL shaders. Includes particle systems, post-processing bloom, and physics-based interactions.',
+      id:'Template portofolio 3D interaktif dengan React Three Fiber dan shader GLSL kustom. Termasuk sistem partikel, post-processing bloom, dan interaksi berbasis fisika.',
+      stack:['React Three Fiber','GLSL','Three.js','@react-three/postprocessing','Rapier'],
+      stats:[{l:'FPS',v:'60'},{l:'Shaders',v:'12'},{l:'Stars',v:'1.2k'}] },
+  ];
+
+  const modal = document.getElementById('modal');
+  const modalTitle = document.getElementById('modal-title');
+  const modalTag = document.getElementById('modal-tag');
+  const modalDesc = document.getElementById('modal-desc');
+  const modalStack = document.getElementById('modal-stack');
+  const modalStats = document.getElementById('modal-stats');
+  const modalGrad = document.getElementById('modal-gradient');
+  const modalLetter = document.getElementById('modal-letter');
+
+  function openModal(idx) {
+    const p = modalData[idx];
+    modalTitle.textContent = p.title;
+    modalTag.textContent = p.tag;
+    modalDesc.textContent = lang === 'en' ? p.en : p.id;
+    modalGrad.className = `absolute inset-0 bg-gradient-to-br ${p.color} opacity-90`;
+    modalLetter.textContent = p.title[0];
+    modalStack.innerHTML = p.stack.map(s => `<span class="px-2 py-1 rounded-full glass">${s}</span>`).join('');
+    modalStats.innerHTML = p.stats.map(s => `<div class="glass rounded-xl py-3"><div class="text-xl font-display font-bold text-gradient">${s.v}</div><div class="text-[11px] text-slate-400 mt-1">${s.l}</div></div>`).join('');
+    modal.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal() {
+    modal.classList.add('hidden');
+    document.body.style.overflow = '';
+  }
+  document.getElementById('modal-backdrop').addEventListener('click', closeModal);
+  document.getElementById('modal-close').addEventListener('click', closeModal);
+  document.getElementById('modal-close2').addEventListener('click', closeModal);
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+  // Attach click on project cards
+  function attachModalClicks() {
+    document.querySelectorAll('#projectsGrid article').forEach((card, idx) => {
+      card.style.cursor = 'pointer';
+      card.addEventListener('click', (e) => {
+        if (e.target.closest('a')) return;
+        openModal(idx);
+      });
+    });
+  }
+  setTimeout(attachModalClicks, 100);
+
+  // ===== Terminal Easter Egg =====
+  const termEl = document.getElementById('terminal');
+  const termOut = document.getElementById('term-output');
+  const termIn = document.getElementById('term-input');
+  const logoBtn = document.querySelector('a[href="#home"] span');
+
+  const cmds = {
+    help: () => [
+      '<span class="text-brand-400">Available commands:</span>',
+      '  <span class="text-emerald-400">about</span>     — who is Galante?',
+      '  <span class="text-emerald-400">stack</span>     — tech stack',
+      '  <span class="text-emerald-400">exp</span>       — work experience',
+      '  <span class="text-emerald-400">contact</span>   — get in touch',
+      '  <span class="text-emerald-400">coffee</span>    — ☕',
+      '  <span class="text-emerald-400">clear</span>     — clear terminal',
+      '  <span class="text-emerald-400">exit</span>      — close terminal',
+    ],
+    about: () => [
+      '<span class="text-fuchsia-400">Galante Marreti</span> — Senior Fullstack Engineer',
+      'Born 17 Feb 2003 · Indonesia 🇮🇩',
+      'Worked: Yogyakarta 🇮🇩 → Amsterdam 🇳🇱',
+      'Languages: Bahasa Indonesia, English',
+      'Passion: obsessive about performance & beautiful UI',
+    ],
+    stack: () => [
+      '<span class="text-cyan-400">Frontend:</span> TypeScript, Next.js, React, Tailwind, Svelte',
+      '<span class="text-emerald-400">Backend:</span>  Go, Rust, Node.js, Bun, Python',
+      '<span class="text-blue-400">Database:</span> PostgreSQL, Redis, MongoDB, TimescaleDB',
+      '<span class="text-orange-400">Infra:</span>    Docker, K8s, AWS, Vercel, Cloudflare',
+    ],
+    exp: () => [
+      '<span class="text-brand-400">Feb 2026 – Present</span>  Software Eng Intern @ Booking.com 🇳🇱',
+      '<span class="text-fuchsia-400">Jan 2025 – Jan 2026</span> Fullstack Engineer @ PT Gamatechno 🇮🇩',
+    ],
+    contact: () => [
+      '📧 galantemarreti@gmail.com',
+      '✈ <span class="text-brand-400">t.me/Cloebe</span>',
+      'Reply time: usually &lt; 24 hours',
+    ],
+    coffee: () => ['☕ Brewing... <span class="text-amber-400">done!</span> Enjoy your coffee ☕'],
+    clear: () => { termOut.innerHTML = ''; return []; },
+    exit: () => { termEl.classList.add('hidden'); return []; },
+  };
+
+  function termPrint(lines) {
+    lines.forEach(l => {
+      const d = document.createElement('div');
+      d.innerHTML = l;
+      d.classList.add('leading-relaxed');
+      termOut.appendChild(d);
+    });
+    termOut.scrollTop = termOut.scrollHeight;
+  }
+
+  function toggleTerminal() {
+    termEl.classList.toggle('hidden');
+    if (!termEl.classList.contains('hidden')) {
+      if (!termOut.children.length) {
+        termPrint(['<span class="text-brand-400">Welcome to Galante\'s terminal</span> 👾', 'Type <span class="text-emerald-400">help</span> to get started.', '']);
+      }
+      setTimeout(() => termIn.focus(), 50);
+    }
+  }
+
+  if (logoBtn) logoBtn.addEventListener('click', e => { e.preventDefault(); toggleTerminal(); });
+  document.getElementById('term-close-btn').addEventListener('click', () => termEl.classList.add('hidden'));
+
+  termIn.addEventListener('keydown', e => {
+    if (e.key !== 'Enter') return;
+    const val = termIn.value.trim().toLowerCase();
+    if (!val) return;
+    termPrint([`<span class="text-slate-500">❯</span> ${val}`]);
+    const fn = cmds[val];
+    if (fn) { const out = fn(); if (out.length) termPrint(out); }
+    else termPrint([`<span class="text-red-400">command not found: ${val}</span>`]);
+    termIn.value = '';
+  });
+
+  // ===== PFP easter egg =====
+  let pfpClicks = 0;
+  const pfpEl = document.getElementById('pfp-img');
+  if (pfpEl) {
+    pfpEl.addEventListener('click', () => {
+      pfpClicks++;
+      const msgs = ['👋 Hey there!','Yep, that\'s me!','Stop clicking 😄','Ok fine... type \"coffee\" in the terminal','✨ Try the terminal (click GM logo!)'];
+      const tip = document.createElement('div');
+      tip.className = 'fixed z-[9999] glass rounded-xl px-4 py-2 text-sm font-medium pointer-events-none';
+      tip.style.cssText = `top:${pfpEl.getBoundingClientRect().top - 50}px;left:${pfpEl.getBoundingClientRect().left + pfpEl.offsetWidth/2}px;transform:translateX(-50%);animation:modal-in .3s ease`;
+      tip.textContent = msgs[(pfpClicks-1) % msgs.length];
+      document.body.appendChild(tip);
+      setTimeout(() => tip.remove(), 2000);
+    });
+  }
+
+  // ===== Konami code =====
+  const konami = ['ArrowUp','ArrowUp','ArrowDown','ArrowDown','ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','b','a'];
+  let kIdx = 0;
+  document.addEventListener('keydown', e => {
+    if (e.key === konami[kIdx]) { kIdx++; if (kIdx === konami.length) { kIdx=0; toggleTerminal(); termPrint(['🎮 <span class="text-fuchsia-400">KONAMI CODE ACTIVATED!</span> Welcome, gamer. 🕹️']); } }
+    else kIdx = e.key === konami[0] ? 1 : 0;
+  });
+
+  // ===== Init =====
+  applyLang();
+  </script>
+</body>
+</html>
